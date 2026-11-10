@@ -105,7 +105,8 @@ Projects:
 1. PDF RAG Pipeline (https://github.com/GOKUL05102003/PDF_RAG_Pipeline): Built a RAG pipeline to parse, embed, and query large PDF documents using Google's Gemini API, ChromaDB, Python, and PyPDF.
 2. Hypertensive Retinopathy Classification (https://github.com/GOKUL05102003/Classification-of-Hypertensive-Retinopathy): Automated deep learning system classifying Hypertensive Retinopathy into 5 clinical stages with 96% accuracy using Python, PyTorch, EfficientNet-B7, OpenCV, NumPy, Scikit-learn.
 3. Chatbot for E-commerce Website (https://github.com/GOKUL05102003/Chatbot-for-E-commerce-Website): End-to-end NLP conversational AI in PyTorch and NLTK for customer support and product recommendations.
-Internship:
+Internships:
+- Dakini AI (October 2026 - Present): Engineered AI-driven voice workflows integrating Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines with CRM systems to automate real-time customer interactions and lead management. Developed automated webhook subscriptions, Meta Graph API integrations, and MCP server tooling to synchronize multi-channel conversational data directly into CRM workflows.
 - Neohorizon Analytics Private Limited, Chennai (June 2023 - July 2023): Engineered responsive UI components using React.js and developed automated Python scripts for data processing workflows.
 Certificates:
 - AI Foundation: TCS iON
@@ -135,8 +136,8 @@ function getLocalAnswer(query) {
   if (q.includes('project') || q.includes('rag') || q.includes('retinopathy') || q.includes('chatbot')) {
     return PREDEFINED_QA["Tell me about his projects?"];
   }
-  if (q.includes('intern') || q.includes('experience') || q.includes('neohorizon')) {
-    return "Gokul interned at Neohorizon Analytics Private Limited, Chennai (June–July 2023), building interactive React.js UI components and automated Python data-processing scripts.";
+  if (q.includes('intern') || q.includes('experience') || q.includes('neohorizon') || q.includes('dakini')) {
+    return "Gokul's internships:\n• Dakini AI (October 2026 – Present): Engineered AI-driven voice workflows integrating STT/TTS pipelines with CRM systems, and developed automated webhooks, Meta Graph API integrations, and MCP server tooling.\n• Neohorizon Analytics Private Limited, Chennai (June–July 2023): Built interactive React.js UI components and automated Python data-processing scripts.";
   }
   return "Gokul R is an AI Engineer & Software Developer skilled in Python, Machine Learning, RAG, LangChain, LangGraph, MCP, Deep Learning (PyTorch), React.js, FastAPI, and MySQL. Ask about his AI skills, education, certifications, projects, or GitHub/LinkedIn links!";
 }
@@ -427,17 +428,29 @@ export default function App() {
     }
   ];
 
-  // Internship
-  const internship = {
-    role: 'Software Engineering Intern',
-    company: 'Neohorizon Analytics Private Limited, Chennai',
-    period: 'June 2023 – July 2023',
-    responsibilities: [
-      'Engineered responsive and interactive user interface components using React.js, translating design specifications into functional web features.',
-      'Developed and optimized automated Python scripts to streamline data processing workflows and fundamental programming logic.'
-    ],
-    tech: ['React.js', 'Python', 'JavaScript', 'HTML', 'CSS']
-  };
+  // Internships
+  const internships = [
+    {
+      role: 'AI Engineering Intern',
+      company: 'Dakini AI',
+      period: 'October 2026 – Present',
+      responsibilities: [
+        'Engineered AI-driven voice workflows integrating Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines with CRM systems to automate real-time customer interactions and lead management.',
+        'Developed automated webhook subscriptions, Meta Graph API integrations, and MCP server tooling to synchronize multi-channel conversational data directly into CRM workflows.'
+      ],
+      tech: ['Python', 'STT', 'TTS', 'CRM Integration', 'Webhooks', 'Meta Graph API', 'MCP']
+    },
+    {
+      role: 'Software Engineering Intern',
+      company: 'Neohorizon Analytics Private Limited, Chennai',
+      period: 'June 2023 – July 2023',
+      responsibilities: [
+        'Engineered responsive and interactive user interface components using React.js, translating design specifications into functional web features.',
+        'Developed and optimized automated Python scripts to streamline data processing workflows and fundamental programming logic.'
+      ],
+      tech: ['React.js', 'Python', 'JavaScript', 'HTML', 'CSS']
+    }
+  ];
 
   // Education (3 items on left side)
   const education = [
@@ -599,7 +612,7 @@ export default function App() {
               Projects
             </button>
             <button onClick={() => scrollTo('experience')} className="hover:text-emerald-400 transition-colors">
-              Internship
+              Internships
             </button>
             <button onClick={() => scrollTo('education-certificates')} className="hover:text-emerald-400 transition-colors">
               Education & Certificates
@@ -652,7 +665,7 @@ export default function App() {
               { id: 'about', label: 'About' },
               { id: 'skills', label: 'Skill sets' },
               { id: 'projects', label: 'Projects' },
-              { id: 'experience', label: 'Internship' },
+              { id: 'experience', label: 'Internships' },
               { id: 'education-certificates', label: 'Education & Certificates' },
               { id: 'contact', label: 'Contact' }
             ].map((item) => (
@@ -1059,7 +1072,7 @@ export default function App() {
         </section>
 
         {/* ==========================================
-            4. INTERNSHIP EXPERIENCE SECTION
+            4. INTERNSHIPS EXPERIENCE SECTION
         ========================================== */}
         <section id="experience" className="space-y-6 scroll-mt-24">
           <div>
@@ -1068,44 +1081,51 @@ export default function App() {
               <span>Industry Experience</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-              Internship
+              Internships
             </h2>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-800">
-              <div>
-                <h3 className="text-xl font-bold text-white">
-                  {internship.company}
-                </h3>
-                <p className="text-emerald-400 text-sm font-medium mt-0.5">
-                  {internship.role}
-                </p>
+          <div className="space-y-6">
+            {internships.map((internship, index) => (
+              <div
+                key={index}
+                className="p-6 sm:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-5"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-800">
+                  <div>
+                    <h3 className="text-xl font-bold text-white">
+                      {internship.company}
+                    </h3>
+                    <p className="text-emerald-400 text-sm font-medium mt-0.5">
+                      {internship.role}
+                    </p>
+                  </div>
+                  <span className="px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-slate-950 text-slate-300 border border-slate-800 w-fit">
+                    {internship.period}
+                  </span>
+                </div>
+
+                <ul className="space-y-3">
+                  {internship.responsibilities.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
+                      <span className="w-2 h-2 rounded-full bg-indigo-400 mt-2 shrink-0" />
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap items-center gap-2 pt-2">
+                  {internship.tech.map((t, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 rounded-lg text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <span className="px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-slate-950 text-slate-300 border border-slate-800 w-fit">
-                {internship.period}
-              </span>
-            </div>
-
-            <ul className="space-y-3">
-              {internship.responsibilities.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
-                  <span className="w-2 h-2 rounded-full bg-indigo-400 mt-2 shrink-0" />
-                  <span className="leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              {internship.tech.map((t, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 rounded-lg text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+            ))}
           </div>
         </section>
 
@@ -1415,23 +1435,35 @@ export default function App() {
                 </div>
               </div>
 
-              {/* 5. Internship */}
+              {/* 5. Internships */}
               <div>
                 <h4 className="font-bold text-emerald-400 uppercase tracking-wider text-xs mb-2.5 border-b border-slate-800 pb-1">
-                  Internship
+                  Internships
                 </h4>
-                <div className="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 space-y-2">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="font-bold text-white">{internship.company}</span>
-                    <span className="text-xs font-mono text-emerald-300">
-                      {internship.period}
-                    </span>
-                  </div>
-                  <ul className="list-disc list-inside space-y-1 text-xs text-slate-300">
-                    {internship.responsibilities.map((r, idx) => (
-                      <li key={idx}>{r}</li>
-                    ))}
-                  </ul>
+                <div className="space-y-3">
+                  {internships.map((intern, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 space-y-2"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                          <span className="font-bold text-white">{intern.company}</span>
+                          <span className="text-xs text-emerald-400 ml-2 font-medium">
+                            • {intern.role}
+                          </span>
+                        </div>
+                        <span className="text-xs font-mono text-emerald-300">
+                          {intern.period}
+                        </span>
+                      </div>
+                      <ul className="list-disc list-inside space-y-1 text-xs text-slate-300">
+                        {intern.responsibilities.map((r, rIdx) => (
+                          <li key={rIdx}>{r}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </div>
 
