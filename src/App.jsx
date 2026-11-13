@@ -102,8 +102,8 @@ Skills:
 - Web Technologies: FastAPI, React.js, HTML, CSS
 - Databases & Frameworks: MySQL, ChromaDB, PyTorch, OpenCV, NumPy, Scikit-learn, NLTK
 Projects:
-1. PDF RAG Pipeline (https://github.com/GOKUL05102003/PDF_RAG_Pipeline): Built a RAG pipeline to parse, embed, and query large PDF documents using Google's Gemini API, ChromaDB, Python, and PyPDF.
-2. Hypertensive Retinopathy Classification (https://github.com/GOKUL05102003/Classification-of-Hypertensive-Retinopathy): Automated deep learning system classifying Hypertensive Retinopathy into 5 clinical stages with 96% accuracy using Python, PyTorch, EfficientNet-B7, OpenCV, NumPy, Scikit-learn.
+1. PDF RAG Pipeline (https://github.com/GOKUL05102003/PDF_RAG_Pipeline): Built a voice-interactive Retrieval-Augmented Generation (RAG) pipeline (STT - LLM - TTS) to parse, embed, and query PDF documents using LangChain, Google’s Gemini API and ChromaDB. Tools: Python, LangChain, Google Generative AI (Gemini), ChromaDB, PyPDF and SpeechRecognition.
+2. Hypertensive Retinopathy Classification (https://github.com/GOKUL05102003/Classification-of-Hypertensive-Retinopathy): Automated deep learning system classifying Hypertensive Retinopathy into 5 clinical stages with 96% accuracy using Python, PyTorch, EfficientNet-B7, OpenCV, NumPy and Scikit-learn.
 3. Chatbot for E-commerce Website (https://github.com/GOKUL05102003/Chatbot-for-E-commerce-Website): End-to-end NLP conversational AI in PyTorch and NLTK for customer support and product recommendations.
 Internships:
 - Dakini AI (October 2026 - Present): Engineered AI-driven voice workflows integrating Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines with CRM systems to automate real-time customer interactions and lead management. Developed automated webhook subscriptions, Meta Graph API integrations, and MCP server tooling to synchronize multi-channel conversational data directly into CRM workflows.
@@ -124,19 +124,19 @@ function getLocalAnswer(query) {
   if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack')) {
     return "• Languages: Python, Java, C, JavaScript\n• AI: Machine Learning, Deep Learning, LLMs, RAG, LangChain, LangGraph, MCP, Hugging Face\n• Web & DB: FastAPI, React.js, HTML, CSS, MySQL";
   }
-  if (q.includes('educat') || q.includes('college') || q.includes('school') || q.includes('cgpa') || q.includes('hsc') || q.includes('sslc')) {
+  if (q.includes('education') || q.includes('college') || q.includes('school') || q.includes('cgpa') || q.includes('hsc') || q.includes('sslc')) {
     return PREDEFINED_QA["Educational details?"];
   }
-  if (q.includes('certificat') || q.includes('course') || q.includes('tcs') || q.includes('skillup') || q.includes('ibm')) {
+  if (q.includes('certificate') || q.includes('course') || q.includes('tcs') || q.includes('skillup') || q.includes('ibm')) {
     return PREDEFINED_QA["Certifications?"];
   }
   if (q.includes('github') || q.includes('linkedin') || q.includes('link') || q.includes('contact') || q.includes('email') || q.includes('phone')) {
     return PREDEFINED_QA["GitHub link and LinkedIn links?"];
   }
-  if (q.includes('project') || q.includes('rag') || q.includes('retinopathy') || q.includes('chatbot')) {
+  if (q.includes('project') || q.includes('rag') || q.includes('projects') || q.includes('chatbot')) {
     return PREDEFINED_QA["Tell me about his projects?"];
   }
-  if (q.includes('intern') || q.includes('experience') || q.includes('neohorizon') || q.includes('dakini')) {
+  if (q.includes('intern') || q.includes('experience') ||q.includes('internship') || q.includes('neohorizon') || q.includes('dakini')) {
     return "Gokul's internships:\n• Dakini AI (October 2026 – Present): Engineered AI-driven voice workflows integrating STT/TTS pipelines with CRM systems, and developed automated webhooks, Meta Graph API integrations, and MCP server tooling.\n• Neohorizon Analytics Private Limited, Chennai (June–July 2023): Built interactive React.js UI components and automated Python data-processing scripts.";
   }
   return "Gokul R is an AI Engineer & Software Developer skilled in Python, Machine Learning, RAG, LangChain, LangGraph, MCP, Deep Learning (PyTorch), React.js, FastAPI, and MySQL. Ask about his AI skills, education, certifications, projects, or GitHub/LinkedIn links!";
@@ -386,16 +386,16 @@ export default function App() {
   const projects = [
     {
       title: 'PDF RAG Pipeline',
-      badge: 'Gemini API + ChromaDB',
+      badge: 'Voice-Interactive RAG',
       icon: <FileText className="w-6 h-6 text-emerald-400" />,
       description:
-        "Built a Retrieval-Augmented Generation (RAG) pipeline to parse, embed, and query large PDF documents using Google's Gemini API and ChromaDB.",
+        'Built a voice-interactive Retrieval-Augmented Generation (RAG) pipeline (STT - LLM - TTS) to parse, embed, and query PDF documents using LangChain, Google’s Gemini API and ChromaDB.',
       highlights: [
-        'Automated PDF parsing and intelligent text chunking with PyPDF',
-        'High-dimensional vector storage and semantic retrieval via ChromaDB',
-        'Context-grounded answer synthesis powered by Google Gemini API'
+        'Voice-interactive workflow integrating Speech-to-Text (STT) and Text-to-Speech (TTS)',
+        'Automated document ingestion, intelligent text chunking, and LangChain orchestration',
+        'High-dimensional vector embedding and semantic retrieval via ChromaDB'
       ],
-      tools: ['Python', 'Google Generative AI (Gemini)', 'ChromaDB', 'PyPDF'],
+      tools: ['Python', 'LangChain', 'ChromaDB', 'PyPDF', 'Google Generative AI (Gemini)', 'SpeechRecognition'],
       githubUrl: 'https://github.com/GOKUL05102003/PDF_RAG_Pipeline'
     },
     {
@@ -481,7 +481,7 @@ export default function App() {
   const certificates = [
     {
       title: 'AI Foundation',
-      issuer: 'TCS ION',
+      issuer: 'TCS iON',
       category: 'Artificial Intelligence & Machine Learning Foundations'
     },
     {
