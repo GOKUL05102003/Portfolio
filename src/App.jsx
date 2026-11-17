@@ -79,7 +79,7 @@ const PREDEFINED_QA = {
   "GitHub link and LinkedIn links?":
     "• GitHub: https://github.com/GOKUL05102003\n• LinkedIn: https://www.linkedin.com/in/gokulrajakumar/\n• Email: gokul05102003@gmail.com",
   "Certifications?":
-    "• AI Foundation — TCS iON\n• Python — Skillup\n• Java — IBM\n• C Programming — Tech Panchami",
+    "• AI Foundation — TCS iON\n• Python — Skillup\n• Fundamentals of AI Agents — Hugging Face\n• SQL — HackerRank",
   "Tell me about his projects?":
     "1. PDF RAG Pipeline: https://github.com/GOKUL05102003/PDF_RAG_Pipeline\n2. Hypertensive Retinopathy Classification (96% accuracy): https://github.com/GOKUL05102003/Classification-of-Hypertensive-Retinopathy\n3. Chatbot for E-commerce Website: https://github.com/GOKUL05102003/Chatbot-for-E-commerce-Website"
 };
@@ -106,13 +106,13 @@ Projects:
 2. Hypertensive Retinopathy Classification (https://github.com/GOKUL05102003/Classification-of-Hypertensive-Retinopathy): Automated deep learning system classifying Hypertensive Retinopathy into 5 clinical stages with 96% accuracy using Python, PyTorch, EfficientNet-B7, OpenCV, NumPy and Scikit-learn.
 3. Chatbot for E-commerce Website (https://github.com/GOKUL05102003/Chatbot-for-E-commerce-Website): End-to-end NLP conversational AI in PyTorch and NLTK for customer support and product recommendations.
 Internships:
-- Dakini AI (October 2026 - Present): Engineered AI-driven voice workflows integrating Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines with CRM systems to automate real-time customer interactions and lead management. Developed automated webhook subscriptions, Meta Graph API integrations, and MCP server tooling to synchronize multi-channel conversational data directly into CRM workflows.
-- Neohorizon Analytics Private Limited, Chennai (June 2023 - July 2023): Engineered responsive UI components using React.js and developed automated Python scripts for data processing workflows.
+- Dakini AI - AI Software Engineer (October 2026 - Present): Engineered AI-driven voice workflows integrating Speech-to-Text (STT) and Text-to-Speech (TTS) pipelines with CRM systems to automate real-time customer interactions and lead management. Developed automated webhook subscriptions, Meta Graph API integrations, and MCP server tooling to synchronize multi-channel conversational data directly into CRM workflows.
+- Neohorizon Analytics Private Limited, Chennai - Software Engineer (June 2023 - July 2023): Engineered responsive UI components using React.js and developed automated Python scripts for data processing workflows.
 Certificates:
 - AI Foundation: TCS iON
 - Python: Skillup
-- Java: IBM
-- C Programming: Tech Panchami
+- Fundamentals of AI Agents: Hugging Face
+- SQL: HackerRank
 `;
 
 function getLocalAnswer(query) {
@@ -127,7 +127,7 @@ function getLocalAnswer(query) {
   if (q.includes('education') || q.includes('college') || q.includes('school') || q.includes('cgpa') || q.includes('hsc') || q.includes('sslc')) {
     return PREDEFINED_QA["Educational details?"];
   }
-  if (q.includes('certificate') || q.includes('course') || q.includes('tcs') || q.includes('skillup') || q.includes('ibm')) {
+  if (q.includes('certificate') || q.includes('course') || q.includes('tcs') || q.includes('skillup') || q.includes('hugging') || q.includes('hackerrank')) {
     return PREDEFINED_QA["Certifications?"];
   }
   if (q.includes('github') || q.includes('linkedin') || q.includes('link') || q.includes('contact') || q.includes('email') || q.includes('phone')) {
@@ -137,7 +137,7 @@ function getLocalAnswer(query) {
     return PREDEFINED_QA["Tell me about his projects?"];
   }
   if (q.includes('intern') || q.includes('experience') ||q.includes('internship') || q.includes('neohorizon') || q.includes('dakini')) {
-    return "Gokul's internships:\n• Dakini AI (October 2026 – Present): Engineered AI-driven voice workflows integrating STT/TTS pipelines with CRM systems, and developed automated webhooks, Meta Graph API integrations, and MCP server tooling.\n• Neohorizon Analytics Private Limited, Chennai (June–July 2023): Built interactive React.js UI components and automated Python data-processing scripts.";
+    return "Gokul's experience:\n• Dakini AI — AI Software Engineer (October 2026 – Present): Engineered AI-driven voice workflows integrating STT/TTS pipelines with CRM systems, and developed automated webhooks, Meta Graph API integrations, and MCP server tooling.\n• Neohorizon Analytics Private Limited, Chennai — Software Engineer (June–July 2023): Built interactive React.js UI components and automated Python data-processing scripts.";
   }
   return "Gokul R is an AI Engineer & Software Developer skilled in Python, Machine Learning, RAG, LangChain, LangGraph, MCP, Deep Learning (PyTorch), React.js, FastAPI, and MySQL. Ask about his AI skills, education, certifications, projects, or GitHub/LinkedIn links!";
 }
@@ -431,7 +431,7 @@ export default function App() {
   // Internships
   const internships = [
     {
-      role: 'AI Engineering Intern',
+      role: 'AI Software Engineer',
       company: 'Dakini AI',
       period: 'October 2026 – Present',
       responsibilities: [
@@ -441,7 +441,7 @@ export default function App() {
       tech: ['Python', 'STT', 'TTS', 'CRM Integration', 'Webhooks', 'Meta Graph API', 'MCP']
     },
     {
-      role: 'Software Engineering Intern',
+      role: 'Software Engineer',
       company: 'Neohorizon Analytics Private Limited, Chennai',
       period: 'June 2023 – July 2023',
       responsibilities: [
@@ -490,14 +490,14 @@ export default function App() {
       category: 'Python Programming & Data Scripting'
     },
     {
-      title: 'Java',
-      issuer: 'IBM',
-      category: 'Object-Oriented Programming & Core Java'
+      title: 'Fundamentals of AI Agents',
+      issuer: 'Hugging Face',
+      category: 'Autonomous Agents & Multi-Agent Architecture'
     },
     {
-      title: 'C Programming',
-      issuer: 'Tech Panchami',
-      category: 'Structured Programming & Algorithmic Logic'
+      title: 'SQL',
+      issuer: 'HackerRank',
+      category: 'Relational Databases & Query Optimization'
     }
   ];
 
@@ -1181,7 +1181,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Right Column: Certificates (AI, Python, Java, C matched to exact same height) */}
+          {/* Right Column: Certificates (AI, Python, Fundamentals of AI Agents, SQL matched to exact same height) */}
           <div className="flex flex-col h-full">
             <div className="mb-6">
               <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400 mb-2">
