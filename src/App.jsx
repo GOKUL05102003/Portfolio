@@ -76,12 +76,12 @@ const PREDEFINED_QA = {
   "Skills?":
     "Gokul's technical skill set:\n" +
     "• Programming Languages: Python, JavaScript, Java, C, .NET\n" +
-    "• Web Technologies: React.js, REST APIs, HTML, CSS\n" +
+    "• Web Technologies: FastAPI, React.js, REST APIs, HTML, CSS\n" +
     "• AI & Machine Learning: Generative AI, AI Agents, Prompt Engineering, Machine Learning, Deep Learning, LLMs, RAG, LangChain, LangGraph, MCP, Hugging Face\n" +
     "• Databases: MySQL, ChromaDB\n" +
     "• Developer Tools: Git, GitHub",
   "Educational details?":
-    "• B.E. CSE (2021–2025): University College of Engineering Villupuram — CGPA: 8.14\n• HSC (2021): Aditya's Vivekananda Matric Hr Sec School — 93%\n• SSLC (2019): Aditya's Vivekananda Matric Hr Sec School — 93%",
+    "• B.E. CSE (2021–2025): University College of Engineering Villupuram — CGPA: 8.14\n• HSC (2021): Aditya's Vivekananda Matric Higher Secondary School Villupuram — 93%\n• SSLC (2019): Aditya's Vivekananda Matric Higher Secondary School Villupuram — 93%",
   "Contact details?":
     "• GitHub: https://github.com/GOKUL05102003\n• LinkedIn: https://www.linkedin.com/in/gokulrajakumar/\n• Email: gokul05102003@gmail.com\n• Call: +91 6380802728",
   "Certifications?":
@@ -99,11 +99,11 @@ Location: Chennai, Tamil Nadu
 Email: gokul05102003@gmail.com | Phone: +91 6380802728
 GitHub: https://github.com/GOKUL05102003
 LinkedIn: https://www.linkedin.com/in/gokulrajakumar/
-Summary: Aspiring AI Engineer with a solid background in machine learning pipelines, RAG systems, and computer vision models.
+Summary: AI Engineer and Computer Science graduate with hands-on experience building Generative AI applications, RAG pipelines, and voice-driven AI workflows (STT/TTS). Skilled in Python, LangChain, LangGraph, MCP, and REST API, with practical experience integrating LLMs, webhooks, and APIs into real-world CRM systems. Focused on developing reliable, scalable AI solutions that automate workflows and solve practical business problems.
 Education:
 1. B.E., Computer Science and Engineering (2021-2025) at University College of Engineering Villupuram - CGPA: 8.14
-2. HSC (2021) at Aditya's Vivekananda Matric Hr Sec School Villupuram - 93%
-3. SSLC (2019) at Aditya's Vivekananda Matric Hr Sec School Villupuram - 93%
+2. HSC (2021) at Aditya's Vivekananda Matric Higher Secondary School Villupuram - 93%
+3. SSLC (2019) at Aditya's Vivekananda Matric Higher Secondary School Villupuram - 93%
 Skills:
 - Programming Languages: Python, Java, C, JavaScript, TypeScript, .NET
 - Artificial Intelligence: Machine Learning, Deep Learning, Generative AI, AI Agents, Prompt Engineering, LLMs, RAG, LangChain, LangGraph, MCP, Hugging Face
@@ -127,8 +127,9 @@ Certificates:
 function getLocalAnswer(query) {
   const q = query.toLowerCase().trim();
   if (PREDEFINED_QA[query]) return PREDEFINED_QA[query];
-  if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack') || q.includes('.net') || q.includes('net') || q.includes('ai') || q.includes('langchain') || q.includes('langgraph') || q.includes('mcp') || q.includes('agent')) {
-    return PREDEFINED_QA["Skills"];
+  if (query === 'Skills' || query === 'skills') return PREDEFINED_QA["Skills?"];
+  if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack') || q.includes('.net') || q.includes('net') || q.includes('fastapi') || q.includes('fast api') || q.includes('ai') || q.includes('langchain') || q.includes('langgraph') || q.includes('mcp') || q.includes('agent')) {
+    return PREDEFINED_QA["Skills?"];
   }
   if (q.includes('education') || q.includes('college') || q.includes('school') || q.includes('cgpa') || q.includes('hsc') || q.includes('sslc')) {
     return PREDEFINED_QA["Educational details?"];
@@ -498,7 +499,7 @@ export default function App() {
     linkedin: 'https://www.linkedin.com/in/gokulrajakumar/',
     resumeUrl: 'https://drive.google.com/file/d/1Mnh4HnoW_59kZV_PLA4BJDWTlc4vGX-S/view?usp=sharing',
     summary:
-      'Aspiring AI Engineer with a solid background in machine learning pipelines, RAG systems, and computer vision models. Eager to combine rigorous analytical capabilities with efficient coding practices to build, test, and deploy intelligent, data-driven solutions in a collaborative engineering team.'
+      'AI Engineer and Computer Science graduate with hands-on experience building Generative AI applications, RAG pipelines, and voice-driven AI workflows (STT/TTS). Skilled in Python, LangChain, LangGraph, MCP, and REST API, with practical experience integrating LLMs, webhooks, and APIs into real-world CRM systems. Focused on developing reliable, scalable AI solutions that automate workflows and solve practical business problems.'
   };
 
   // Individual Skill Blocks for "Skill sets" section (Clean core skills - frameworks removed)
@@ -602,6 +603,12 @@ export default function App() {
       icon: <Bot className="w-5 h-5 text-emerald-400" />
     },
     // Web Technologies
+    {
+      name: 'FastAPI',
+      category: 'Web Technologies',
+      tag: 'High-Performance Python Web Framework',
+      icon: <Zap className="w-5 h-5 text-indigo-400" />
+    },
     {
       name: 'React.js',
       category: 'Web Technologies',
@@ -757,13 +764,13 @@ export default function App() {
     },
     {
       degree: 'HSC',
-      institution: "Aditya's Vivekananda Matric Hr Sec School Villupuram",
+      institution: "Aditya's Vivekananda Matric Higher Secondary School Villupuram",
       period: '2021',
       score: 'Percentage: 93%'
     },
     {
       degree: 'SSLC',
-      institution: "Aditya's Vivekananda Matric Hr Sec School Villupuram",
+      institution: "Aditya's Vivekananda Matric Higher Secondary School Villupuram",
       period: '2019',
       score: 'Percentage: 93%'
     }
