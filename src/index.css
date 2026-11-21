@@ -5,3 +5,64 @@
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #050B12;
+  color: #F1F5F9;
+  overflow-x: hidden;
+}
+
+/* Custom modern scrollbar with teal/navy theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050B12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0B1824;
+  border: 1px solid rgba(0, 229, 212, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 212, 0.35);
+}
+
+/* Hide default cursor on desktop when custom cursor is active */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Base Card Styling - Subtle Dark Glass */
+.cinematic-card {
+  background: #0B1824;
+  border: 1px solid rgba(0, 229, 212, 0.12);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.cinematic-card:hover {
+  border-color: rgba(0, 229, 212, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(0, 229, 212, 0.15), 0 0 20px -5px rgba(0, 200, 255, 0.10);
+}
+
+/* Contact box subtle border glow ONLY - No movement, no scale, no tilt */
+.contact-box {
+  background: #0B1824;
+  border: 1px solid rgba(0, 229, 212, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: none !important;
+}
+
+.contact-box:hover {
+  border-color: rgba(0, 229, 212, 0.45);
+  box-shadow: 0 0 35px -5px rgba(0, 229, 212, 0.18);
+  transform: none !important;
+}

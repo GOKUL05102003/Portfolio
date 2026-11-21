@@ -27,7 +27,8 @@ import {
   Bot,
   CheckCircle2,
   BookOpen,
-  Zap
+  Zap,
+  GitBranch
 } from 'lucide-react';
 
 // Custom SVG Icons for GitHub and LinkedIn (lucide standard 24x24 outline style)
@@ -72,16 +73,23 @@ const Linkedin = ({ className = "w-4 h-4", ...props }) => (
 // PREDEFINED QA & LOCAL KNOWLEDGE FOR GOKUL'S ASSISTANT
 // ==========================================
 const PREDEFINED_QA = {
-  "What are Gokul's skills in AI?":
-    "Gokul's AI skills include Machine Learning, Deep Learning, LLMs, RAG, LangChain, LangGraph, MCP (Model Context Protocol), Hugging Face, PyTorch, Computer Vision (EfficientNet-B7, OpenCV), and ChromaDB.",
+  "Skills?":
+    "Gokul's technical skill set:\n" +
+    "• Programming Languages: Python, JavaScript, Java, C, .NET\n" +
+    "• Web Technologies: React.js, REST APIs, HTML, CSS\n" +
+    "• AI & Machine Learning: Generative AI, AI Agents, Prompt Engineering, Machine Learning, Deep Learning, LLMs, RAG, LangChain, LangGraph, MCP, Hugging Face\n" +
+    "• Databases: MySQL, ChromaDB\n" +
+    "• Developer Tools: Git, GitHub",
   "Educational details?":
-    "• B.E. CSE (2021–2025): University College of Engineering Villupuram — CGPA: 8.14\n• HSC (2021): Aditya's Vivekananda Matric Hr Sec School — 93% (Mathematics, physics, chemistry and biology)\n• SSLC (2019): Aditya's Vivekananda Matric Hr Sec School — 93% (Tamil, English, Maths, Science, Social)",
-  "GitHub link and LinkedIn links?":
-    "• GitHub: https://github.com/GOKUL05102003\n• LinkedIn: https://www.linkedin.com/in/gokulrajakumar/\n• Email: gokul05102003@gmail.com",
+    "• B.E. CSE (2021–2025): University College of Engineering Villupuram — CGPA: 8.14\n• HSC (2021): Aditya's Vivekananda Matric Hr Sec School — 93%\n• SSLC (2019): Aditya's Vivekananda Matric Hr Sec School — 93%",
+  "Contact details?":
+    "• GitHub: https://github.com/GOKUL05102003\n• LinkedIn: https://www.linkedin.com/in/gokulrajakumar/\n• Email: gokul05102003@gmail.com\n• Call: +91 6380802728",
   "Certifications?":
     "• AI Foundation — TCS iON\n• Python — Skillup\n• Fundamentals of AI Agents — Hugging Face\n• SQL — HackerRank",
-  "Tell me about his projects?":
-    "1. PDF RAG Pipeline: https://github.com/GOKUL05102003/PDF_RAG_Pipeline\n2. Hypertensive Retinopathy Classification (96% accuracy): https://github.com/GOKUL05102003/Classification-of-Hypertensive-Retinopathy\n3. Chatbot for E-commerce Website: https://github.com/GOKUL05102003/Chatbot-for-E-commerce-Website"
+  "Internships?":
+    "Gokul's experience:\n• Dakini AI — AI Software Engineer (October 2026 – Present): Engineered AI-driven voice workflows integrating STT/TTS pipelines with CRM systems, and developed automated webhooks, Meta Graph API integrations, and MCP server tooling.\n• Neohorizon Analytics Private Limited, Chennai — Software Engineer (June–July 2023): Built interactive React.js UI components and automated Python data-processing scripts.",
+  "Projects?":
+    "1. PDF RAG Pipeline: https://github.com/GOKUL05102003/PDF_RAG_Pipeline\n2. Hypertensive Retinopathy Classification: https://github.com/GOKUL05102003/Classification-of-Hypertensive-Retinopathy\n3. Chatbot for E-commerce Website: https://github.com/GOKUL05102003/Chatbot-for-E-commerce-Website"
 };
 
 const RESUME_CONTEXT = `
@@ -94,13 +102,14 @@ LinkedIn: https://www.linkedin.com/in/gokulrajakumar/
 Summary: Aspiring AI Engineer with a solid background in machine learning pipelines, RAG systems, and computer vision models.
 Education:
 1. B.E., Computer Science and Engineering (2021-2025) at University College of Engineering Villupuram - CGPA: 8.14
-2. HSC (2021) at Aditya's Vivekananda Matric Hr Sec School Villupuram - 93% (Mathematics, physics, chemistry and biology)
-3. SSLC (2019) at Aditya's Vivekananda Matric Hr Sec School Villupuram - 93% (Tamil, English, Maths, Science, Social)
+2. HSC (2021) at Aditya's Vivekananda Matric Hr Sec School Villupuram - 93%
+3. SSLC (2019) at Aditya's Vivekananda Matric Hr Sec School Villupuram - 93%
 Skills:
-- Programming Languages: Python, Java, C, JavaScript
-- Artificial Intelligence: Machine Learning, Deep Learning, LLMs, RAG, LangChain, LangGraph, MCP (Model Context Protocol), Hugging Face
-- Web Technologies: FastAPI, React.js, HTML, CSS
+- Programming Languages: Python, Java, C, JavaScript, TypeScript, .NET
+- Artificial Intelligence: Machine Learning, Deep Learning, Generative AI, AI Agents, Prompt Engineering, LLMs, RAG, LangChain, LangGraph, MCP, Hugging Face
+- Web Technologies: REST APIs, FastAPI, React.js, HTML, CSS
 - Databases & Frameworks: MySQL, ChromaDB, PyTorch, OpenCV, NumPy, Scikit-learn, NLTK
+- Developer Tools: Git, GitHub
 Projects:
 1. PDF RAG Pipeline (https://github.com/GOKUL05102003/PDF_RAG_Pipeline): Built a voice-interactive Retrieval-Augmented Generation (RAG) pipeline (STT - LLM - TTS) to parse, embed, and query PDF documents using LangChain, Google’s Gemini API and ChromaDB. Tools: Python, LangChain, Google Generative AI (Gemini), ChromaDB, PyPDF and SpeechRecognition.
 2. Hypertensive Retinopathy Classification (https://github.com/GOKUL05102003/Classification-of-Hypertensive-Retinopathy): Automated deep learning system classifying Hypertensive Retinopathy into 5 clinical stages with 96% accuracy using Python, PyTorch, EfficientNet-B7, OpenCV, NumPy and Scikit-learn.
@@ -118,11 +127,8 @@ Certificates:
 function getLocalAnswer(query) {
   const q = query.toLowerCase().trim();
   if (PREDEFINED_QA[query]) return PREDEFINED_QA[query];
-  if (q.includes('ai') || q.includes('langchain') || q.includes('langgraph') || q.includes('mcp')) {
-    return PREDEFINED_QA["What are Gokul's skills in AI?"];
-  }
-  if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack')) {
-    return "• Languages: Python, Java, C, JavaScript\n• AI: Machine Learning, Deep Learning, LLMs, RAG, LangChain, LangGraph, MCP, Hugging Face\n• Web & DB: FastAPI, React.js, HTML, CSS, MySQL";
+  if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack') || q.includes('.net') || q.includes('net') || q.includes('ai') || q.includes('langchain') || q.includes('langgraph') || q.includes('mcp') || q.includes('agent')) {
+    return PREDEFINED_QA["Skills"];
   }
   if (q.includes('education') || q.includes('college') || q.includes('school') || q.includes('cgpa') || q.includes('hsc') || q.includes('sslc')) {
     return PREDEFINED_QA["Educational details?"];
@@ -130,50 +136,330 @@ function getLocalAnswer(query) {
   if (q.includes('certificate') || q.includes('course') || q.includes('tcs') || q.includes('skillup') || q.includes('hugging') || q.includes('hackerrank')) {
     return PREDEFINED_QA["Certifications?"];
   }
-  if (q.includes('github') || q.includes('linkedin') || q.includes('link') || q.includes('contact') || q.includes('email') || q.includes('phone')) {
-    return PREDEFINED_QA["GitHub link and LinkedIn links?"];
+  if (q.includes('github') || q.includes('linkedin') || q.includes('link') || q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('mobile') || q.includes('call')) {
+    return PREDEFINED_QA["Contact details?"];
   }
   if (q.includes('project') || q.includes('rag') || q.includes('projects') || q.includes('chatbot')) {
-    return PREDEFINED_QA["Tell me about his projects?"];
+    return PREDEFINED_QA["Projects?"];
   }
-  if (q.includes('intern') || q.includes('experience') ||q.includes('internship') || q.includes('neohorizon') || q.includes('dakini')) {
-    return "Gokul's experience:\n• Dakini AI — AI Software Engineer (October 2026 – Present): Engineered AI-driven voice workflows integrating STT/TTS pipelines with CRM systems, and developed automated webhooks, Meta Graph API integrations, and MCP server tooling.\n• Neohorizon Analytics Private Limited, Chennai — Software Engineer (June–July 2023): Built interactive React.js UI components and automated Python data-processing scripts.";
+  if (q.includes('intern') || q.includes('intership') || q.includes('experience') || q.includes('internship') || q.includes('neohorizon') || q.includes('dakini')) {
+    return PREDEFINED_QA["Internships?"];
   }
-  return "Gokul R is an AI Engineer & Software Developer skilled in Python, Machine Learning, RAG, LangChain, LangGraph, MCP, Deep Learning (PyTorch), React.js, FastAPI, and MySQL. Ask about his AI skills, education, certifications, projects, or GitHub/LinkedIn links!";
+  return "Gokul R is an AI Engineer & Software Developer skilled in Python, Machine Learning, RAG, LangChain, LangGraph, MCP, Deep Learning (PyTorch), React.js, FastAPI, and MySQL. Ask about his AI skills, education, certifications, projects, or contact details!";
 }
 
-// Helper to render URLs inside chat messages as clickable links
+// Helper to render URLs, email addresses, and phone numbers inside chat messages as clickable links
 function renderMessageWithLinks(text) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const tokenRegex = /(https?:\/\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|\+91\s?[0-9]{10})/g;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const phoneRegex = /^\+91\s?[0-9]{10}$/;
+  const urlRegex = /^https?:\/\//;
+
   const lines = text.split('\n');
   return lines.map((line, lineIdx) => {
-    const parts = line.split(urlRegex);
+    const parts = line.split(tokenRegex);
     return (
       <div key={lineIdx} className={lineIdx > 0 ? 'mt-1' : ''}>
-        {parts.map((part, i) =>
-          urlRegex.test(part) ? (
-            <a
-              key={i}
-              href={part}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-emerald-400 underline hover:text-emerald-300 break-all"
-            >
-              {part}
-            </a>
-          ) : (
-            <span key={i}>{part}</span>
-          )
-        )}
+        {parts.map((part, i) => {
+          if (!part) return null;
+          if (urlRegex.test(part)) {
+            return (
+              <a
+                key={i}
+                href={part}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00E5D4] underline hover:text-[#00C8FF] break-all"
+              >
+                {part}
+              </a>
+            );
+          }
+          if (emailRegex.test(part)) {
+            return (
+              <a
+                key={i}
+                href={`mailto:${part}`}
+                className="text-[#00E5D4] underline hover:text-[#00C8FF] break-all"
+              >
+                {part}
+              </a>
+            );
+          }
+          if (phoneRegex.test(part)) {
+            return (
+              <a
+                key={i}
+                href={`tel:${part.replace(/\s+/g, '')}`}
+                className="text-[#00E5D4] underline hover:text-[#00C8FF] break-all"
+              >
+                {part}
+              </a>
+            );
+          }
+          return <span key={i}>{part}</span>;
+        })}
       </div>
     );
   });
 }
 
+// ==========================================
+// CONSTELLATION / PLEXUS PARTICLE NETWORK BACKGROUND (Teal / Cyan theme)
+// ==========================================
+function ConstellationBackground({ mousePos }) {
+  const canvasRef = useRef(null);
+  const mouseRef = useRef(mousePos);
+
+  useEffect(() => {
+    mouseRef.current = mousePos;
+  }, [mousePos]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', handleResize);
+
+    const particleCount = Math.min(85, Math.floor((width * height) / 14000));
+    const colors = ['#00E5D4', '#00C8FF', '#38BDF8', '#2DD4BF', '#0EA5E9'];
+
+    const particles = Array.from({ length: particleCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      radius: Math.random() * 1.6 + 1.2,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    }));
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      const maxDist = 140;
+      const m = mouseRef.current;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+
+        if (p1.x < 0 || p1.x > width) p1.vx *= -1;
+        if (p1.y < 0 || p1.y > height) p1.vy *= -1;
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDist) {
+            const alpha = (1 - dist / maxDist) * 0.28;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0, 229, 212, ${alpha})`;
+            ctx.lineWidth = 0.85;
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+
+        if (m && m.x > 0) {
+          const mdx = p1.x - m.x;
+          const mdy = p1.y - m.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < 160) {
+            const mAlpha = (1 - mdist / 160) * 0.45;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0, 200, 255, ${mAlpha})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(m.x, m.y);
+            ctx.stroke();
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p1.color;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = p1.color;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none fixed inset-0 z-0 opacity-70"
+    />
+  );
+}
+
+// ==========================================
+// MOUSE-POSITION-BASED 3D CARD TILT COMPONENT
+// Decoupled stationary trigger wrapper + Lerp animation frame
+// Completely eliminates transform feedback loop, sudden jumps, and jitter
+// ==========================================
+function TiltCard({ children, className = '', maxTilt = 4.5, style = {}, ...props }) {
+  const containerRef = useRef(null);
+  const cardRef = useRef(null);
+  const targetRot = useRef({ x: 0, y: 0 });
+  const currentRot = useRef({ x: 0, y: 0 });
+  const animFrameId = useRef(null);
+  const isHoveredRef = useRef(false);
+
+  const updateTransform = () => {
+    // Controlled linear interpolation factor (0.12) for smooth, natural movement
+    currentRot.current.x += (targetRot.current.x - currentRot.current.x) * 0.12;
+    currentRot.current.y += (targetRot.current.y - currentRot.current.y) * 0.12;
+
+    if (cardRef.current) {
+      cardRef.current.style.transform = `perspective(1000px) rotateX(${currentRot.current.x.toFixed(2)}deg) rotateY(${currentRot.current.y.toFixed(2)}deg)`;
+    }
+
+    const diffX = Math.abs(targetRot.current.x - currentRot.current.x);
+    const diffY = Math.abs(targetRot.current.y - currentRot.current.y);
+
+    if (isHoveredRef.current || diffX > 0.01 || diffY > 0.01) {
+      animFrameId.current = requestAnimationFrame(updateTransform);
+    } else {
+      if (cardRef.current) {
+        cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      }
+      animFrameId.current = null;
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    // Disable on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (!containerRef.current) return;
+
+    // Stable coordinate reference frame from UNTRANSFORMED outer container
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const normX = Math.max(-1, Math.min(1, (x - rect.width / 2) / (rect.width / 2)));
+    const normY = Math.max(-1, Math.min(1, (y - rect.height / 2) / (rect.height / 2)));
+
+    targetRot.current = {
+      x: -normY * maxTilt,
+      y: normX * maxTilt
+    };
+
+    if (!animFrameId.current) {
+      animFrameId.current = requestAnimationFrame(updateTransform);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    isHoveredRef.current = true;
+    if (!animFrameId.current) {
+      animFrameId.current = requestAnimationFrame(updateTransform);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    isHoveredRef.current = false;
+    targetRot.current = { x: 0, y: 0 };
+    if (!animFrameId.current) {
+      animFrameId.current = requestAnimationFrame(updateTransform);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (animFrameId.current) {
+        cancelAnimationFrame(animFrameId.current);
+      }
+    };
+  }, []);
+
+  const isFlex1 = className.includes('flex-1');
+
+  return (
+    <div
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`relative ${isFlex1 ? 'flex-1 flex flex-col' : 'w-full'}`}
+      style={{ transform: 'none' }}
+    >
+      <div
+        ref={cardRef}
+        className={`${className} ${isFlex1 ? 'flex-1' : ''}`}
+        style={{
+          transformStyle: 'preserve-3d',
+          willChange: 'transform',
+          transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+          ...style
+        }}
+        {...props}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [copiedItem, setCopiedItem] = useState(null);
-  const [showResumeModal, setShowResumeModal] = useState(false);
+
+  // Interactive cursor tracking & hover detection (Image 3)
+  const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
+  const [cursorActive, setCursorActive] = useState(false);
+  const [cursorHovered, setCursorHovered] = useState(false);
+
+  useEffect(() => {
+    const handlePointerMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+      setCursorActive(true);
+      const target = e.target;
+      if (target && target.closest('a, button, input, textarea, [role="button"], .cosmic-card')) {
+        setCursorHovered(true);
+      } else {
+        setCursorHovered(false);
+      }
+    };
+
+    const handlePointerLeave = () => {
+      setCursorActive(false);
+    };
+
+    window.addEventListener('pointermove', handlePointerMove);
+    document.addEventListener('mouseleave', handlePointerLeave);
+
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      document.removeEventListener('mouseleave', handlePointerLeave);
+    };
+  }, []);
 
   // Skill sets search & category filter state
   const [skillSearch, setSkillSearch] = useState('');
@@ -185,7 +471,7 @@ export default function App() {
   const [chatHistory, setChatHistory] = useState([
     {
       role: 'assistant',
-      text: "Hi! I'm Gokul's Assistant. Ask me about Gokul's AI skills, educational details, certifications, projects, or GitHub & LinkedIn links!"
+      text: "Hi! I'm Gokul's Assistant. Ask me about Gokul's AI skills, educational details, certifications, projects, or contact details!"
     }
   ]);
   const chatContainerRef = useRef(null);
@@ -210,11 +496,12 @@ export default function App() {
     phone: '+91 6380802728',
     github: 'https://github.com/GOKUL05102003',
     linkedin: 'https://www.linkedin.com/in/gokulrajakumar/',
+    resumeUrl: 'https://drive.google.com/file/d/1Mnh4HnoW_59kZV_PLA4BJDWTlc4vGX-S/view?usp=sharing',
     summary:
       'Aspiring AI Engineer with a solid background in machine learning pipelines, RAG systems, and computer vision models. Eager to combine rigorous analytical capabilities with efficient coding practices to build, test, and deploy intelligent, data-driven solutions in a collaborative engineering team.'
   };
 
-  // Individual Skill Blocks for "Skill sets" section (No Flask)
+  // Individual Skill Blocks for "Skill sets" section (Clean core skills - frameworks removed)
   const allSkills = useMemo(() => [
     // Programming Languages
     {
@@ -222,6 +509,12 @@ export default function App() {
       category: 'Programming Languages',
       tag: 'Primary AI & Automation Language',
       icon: <Terminal className="w-5 h-5 text-cyan-400" />
+    },
+    {
+      name: 'JavaScript',
+      category: 'Programming Languages',
+      tag: 'ES6+ Interactive Web Logic',
+      icon: <Zap className="w-5 h-5 text-cyan-400" />
     },
     {
       name: 'Java',
@@ -236,12 +529,30 @@ export default function App() {
       icon: <Cpu className="w-5 h-5 text-cyan-400" />
     },
     {
-      name: 'JavaScript',
+      name: '.NET',
       category: 'Programming Languages',
-      tag: 'ES6+ Interactive Web Logic',
-      icon: <Zap className="w-5 h-5 text-cyan-400" />
+      tag: 'Enterprise Application & Backend Framework',
+      icon: <Layers className="w-5 h-5 text-cyan-400" />
     },
     // Artificial Intelligence
+    {
+      name: 'Generative AI',
+      category: 'Artificial Intelligence',
+      tag: 'Foundation Models & Synthesis',
+      icon: <Sparkles className="w-5 h-5 text-emerald-400" />
+    },
+    {
+      name: 'AI Agents',
+      category: 'Artificial Intelligence',
+      tag: 'Autonomous Multi-Agent Systems',
+      icon: <Bot className="w-5 h-5 text-emerald-400" />
+    },
+    {
+      name: 'Prompt Engineering',
+      category: 'Artificial Intelligence',
+      tag: 'Few-Shot, In-Context Learning & CoT',
+      icon: <MessageSquare className="w-5 h-5 text-emerald-400" />
+    },
     {
       name: 'Machine Learning',
       category: 'Artificial Intelligence',
@@ -257,7 +568,7 @@ export default function App() {
     {
       name: 'LLMs',
       category: 'Artificial Intelligence',
-      tag: 'Gemini API & Prompt Engineering',
+      tag: 'Gemini API & Prompt Tuning',
       icon: <Sparkles className="w-5 h-5 text-emerald-400" />
     },
     {
@@ -292,16 +603,16 @@ export default function App() {
     },
     // Web Technologies
     {
-      name: 'FastAPI',
-      category: 'Web Technologies',
-      tag: 'High-Speed Python REST APIs',
-      icon: <Zap className="w-5 h-5 text-indigo-400" />
-    },
-    {
       name: 'React.js',
       category: 'Web Technologies',
-      tag: 'Component-Driven Frontend UI',
-      icon: <Layers className="w-5 h-5 text-indigo-400" />
+      tag: 'Frontend Component Architecture',
+      icon: <Code2 className="w-5 h-5 text-indigo-400" />
+    },
+    {
+      name: 'REST APIs',
+      category: 'Web Technologies',
+      tag: 'Scalable Endpoints & HTTP Protocols',
+      icon: <Zap className="w-5 h-5 text-indigo-400" />
     },
     {
       name: 'HTML',
@@ -315,48 +626,31 @@ export default function App() {
       tag: 'Responsive Styling & Layouts',
       icon: <Layers className="w-5 h-5 text-indigo-400" />
     },
-    // Databases & Frameworks
+    // Databases
     {
       name: 'MySQL',
-      category: 'Databases & Frameworks',
+      category: 'Databases',
       tag: 'Relational Database Management',
       icon: <Database className="w-5 h-5 text-amber-400" />
     },
     {
       name: 'ChromaDB',
-      category: 'Databases & Frameworks',
+      category: 'Databases',
       tag: 'Vector Store for RAG Systems',
       icon: <Database className="w-5 h-5 text-amber-400" />
     },
+    // Developer Tools
     {
-      name: 'PyTorch',
-      category: 'Databases & Frameworks',
-      tag: 'Deep Learning & Vision Models',
-      icon: <Brain className="w-5 h-5 text-amber-400" />
+      name: 'Git',
+      category: 'Developer Tools',
+      tag: 'Version Control & Branching',
+      icon: <GitBranch className="w-5 h-5 text-sky-400" />
     },
     {
-      name: 'OpenCV',
-      category: 'Databases & Frameworks',
-      tag: 'Computer Vision & Image Processing',
-      icon: <Eye className="w-5 h-5 text-amber-400" />
-    },
-    {
-      name: 'NumPy',
-      category: 'Databases & Frameworks',
-      tag: 'Numerical Computing & Arrays',
-      icon: <Cpu className="w-5 h-5 text-amber-400" />
-    },
-    {
-      name: 'Scikit-learn',
-      category: 'Databases & Frameworks',
-      tag: 'Evaluation & Classical ML',
-      icon: <Brain className="w-5 h-5 text-amber-400" />
-    },
-    {
-      name: 'NLTK',
-      category: 'Databases & Frameworks',
-      tag: 'Natural Language Tokenization',
-      icon: <MessageSquare className="w-5 h-5 text-amber-400" />
+      name: 'GitHub',
+      category: 'Developer Tools',
+      tag: 'CI/CD & Remote Repositories',
+      icon: <Github className="w-5 h-5 text-sky-400" />
     }
   ], []);
 
@@ -365,7 +659,8 @@ export default function App() {
     'Programming Languages',
     'Artificial Intelligence',
     'Web Technologies',
-    'Databases & Frameworks'
+    'Databases',
+    'Developer Tools'
   ];
 
   const filteredSkills = useMemo(() => {
@@ -458,22 +753,19 @@ export default function App() {
       degree: 'B.E., Computer Science and Engineering',
       institution: 'University College of Engineering Villupuram',
       period: '2021 – 2025',
-      score: 'CGPA: 8.14',
-      subjects: 'Computer Science and Engineering'
+      score: 'CGPA: 8.14'
     },
     {
       degree: 'HSC',
       institution: "Aditya's Vivekananda Matric Hr Sec School Villupuram",
       period: '2021',
-      score: 'Percentage: 93%',
-      subjects: 'Mathematics, physics, chemistry and biology'
+      score: 'Percentage: 93%'
     },
     {
       degree: 'SSLC',
       institution: "Aditya's Vivekananda Matric Hr Sec School Villupuram",
       period: '2019',
-      score: 'Percentage: 93%',
-      subjects: 'Tamil, English, Maths, Science, Social'
+      score: 'Percentage: 93%'
     }
   ];
 
@@ -482,22 +774,26 @@ export default function App() {
     {
       title: 'AI Foundation',
       issuer: 'TCS iON',
-      category: 'Artificial Intelligence & Machine Learning Foundations'
+      category: 'Artificial Intelligence & Machine Learning Foundations',
+      certificateUrl: 'https://drive.google.com/file/d/1YfWytuMu62MpersYX20DKa1Npq0Fp8iy/view?usp=sharing'
     },
     {
       title: 'Python',
       issuer: 'Skillup',
-      category: 'Python Programming & Data Scripting'
+      category: 'Python Programming & Data Scripting',
+      certificateUrl: 'https://drive.google.com/file/d/1lAwGiiHj0uMjs5Jf4K0mBNn3nnHg54zO/view?usp=sharing'
     },
     {
       title: 'Fundamentals of AI Agents',
       issuer: 'Hugging Face',
-      category: 'Autonomous Agents & Multi-Agent Architecture'
+      category: 'Autonomous Agents & Multi-Agent Architecture',
+      certificateUrl: 'https://drive.google.com/file/d/1RTECFk5EvtX2TdgxMHSFGqI3iPjolzPl/view?usp=sharing'
     },
     {
       title: 'SQL',
       issuer: 'HackerRank',
-      category: 'Relational Databases & Query Optimization'
+      category: 'Relational Databases & Query Optimization',
+      certificateUrl: 'https://drive.google.com/file/d/1zj1FpTAug-QtUyRrk74SMHmyyL8M-0nA/view?usp=sharing'
     }
   ];
 
@@ -578,46 +874,97 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-emerald-500/20 selection:text-emerald-300 antialiased">
-      {/* Ambient Background Glows */}
+    <div className="min-h-screen bg-[#050B12] text-[#F1F5F9] font-sans custom-cursor-active selection:bg-[#00E5D4]/25 selection:text-[#00E5D4] antialiased relative overflow-x-hidden">
+      {/* 1. Seamless Diffuse Ambient Glow Following Cursor (No visible edge/circumference) */}
+      <div
+        className="pointer-events-none fixed inset-0 z-10 transition-opacity duration-300"
+        style={{
+          opacity: cursorActive ? 1 : 0,
+          background: `radial-gradient(circle 450px at ${cursorPos.x}px ${cursorPos.y}px, rgba(0, 229, 212, 0.08) 0%, rgba(0, 200, 255, 0.04) 30%, rgba(8, 19, 31, 0.015) 65%, rgba(5, 11, 18, 0) 100%)`
+        }}
+        aria-hidden="true"
+      />
+
+      {/* 2. Custom Sleek Arrowhead Pointer (Preserved exact shape, themed to Electric Teal & Cyan) */}
+      {cursorActive && (
+        <div
+          className="pointer-events-none fixed z-50 transition-transform duration-75 ease-out hidden md:block"
+          style={{
+            left: `${cursorPos.x}px`,
+            top: `${cursorPos.y}px`,
+            transform: `translate(-3px, -3px) ${cursorHovered ? 'scale(1.2)' : 'scale(1)'}`
+          }}
+          aria-hidden="true"
+        >
+          <svg
+            width="28"
+            height="32"
+            viewBox="0 0 28 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="filter drop-shadow-[0_2px_14px_rgba(0,229,212,0.7)]"
+          >
+            <defs>
+              <linearGradient id="cursorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00E5D4" />
+                <stop offset="45%" stopColor="#00C8FF" />
+                <stop offset="85%" stopColor="#0284c7" />
+                <stop offset="100%" stopColor="#082f49" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M 4 3 C 2.2 1.5, 0.5 2.8, 0.8 5 L 3.8 24.5 C 4.2 26.8, 6.8 27.6, 8.3 25.8 L 12.8 20.3 L 20.8 21.8 C 22.8 22.2, 24.2 19.8, 22.8 18.2 L 5.8 3.4 C 5.3 2.9, 4.6 2.7, 4 3 Z"
+              fill="url(#cursorGrad)"
+              stroke="rgba(255, 255, 255, 0.6)"
+              strokeWidth="0.8"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      )}
+
+      {/* 3. Constellation Background (Image 2 Moving Connected Network Lines) */}
+      <ConstellationBackground mousePos={cursorPos} />
+
+      {/* Ambient Cosmic Background Glows */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-[130px]" />
-        <div className="absolute top-1/3 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[130px]" />
-        <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-indigo-500/10 rounded-full blur-[130px]" />
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#00E5D4]/5 rounded-full blur-[140px]" />
+        <div className="absolute top-1/3 -right-40 w-96 h-96 bg-[#00C8FF]/5 rounded-full blur-[140px]" />
+        <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-[#08131F] rounded-full blur-[140px]" />
       </div>
 
-      {/* Sticky Navigation Bar */}
-      <nav className="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
+      {/* Fixed Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-40 bg-[#050B12]/85 backdrop-blur-md border-b border-[#00E5D4]/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <button
             onClick={() => scrollTo('about')}
             className="flex items-center gap-2.5 group focus:outline-none"
           >
-            <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-slate-950 font-black text-lg shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+            <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00E5D4] to-[#00C8FF] flex items-center justify-center text-[#050B12] font-black text-lg shadow-lg shadow-[#00E5D4]/20 group-hover:scale-105 transition-transform">
               G
             </span>
-            <span className="font-bold text-lg tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+            <span className="font-heading font-bold text-lg tracking-tight text-[#F1F5F9] group-hover:text-[#00E5D4] transition-colors">
               {profile.name}
             </span>
           </button>
 
-          <div className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-            <button onClick={() => scrollTo('about')} className="hover:text-emerald-400 transition-colors">
+          <div className="hidden md:flex items-center gap-7 text-sm font-medium text-[#A7B3C2]">
+            <button onClick={() => scrollTo('about')} className="hover:text-[#00E5D4] hover:-translate-y-0.5 transition-all duration-200">
               About
             </button>
-            <button onClick={() => scrollTo('skills')} className="hover:text-emerald-400 transition-colors">
-              Skill sets
-            </button>
-            <button onClick={() => scrollTo('projects')} className="hover:text-emerald-400 transition-colors">
-              Projects
-            </button>
-            <button onClick={() => scrollTo('experience')} className="hover:text-emerald-400 transition-colors">
+            <button onClick={() => scrollTo('experience')} className="hover:text-[#00E5D4] hover:-translate-y-0.5 transition-all duration-200">
               Internships
             </button>
-            <button onClick={() => scrollTo('education-certificates')} className="hover:text-emerald-400 transition-colors">
+            <button onClick={() => scrollTo('projects')} className="hover:text-[#00E5D4] hover:-translate-y-0.5 transition-all duration-200">
+              Projects
+            </button>
+            <button onClick={() => scrollTo('skills')} className="hover:text-[#00E5D4] hover:-translate-y-0.5 transition-all duration-200">
+              Skill sets
+            </button>
+            <button onClick={() => scrollTo('education-certificates')} className="hover:text-[#00E5D4] hover:-translate-y-0.5 transition-all duration-200">
               Education & Certificates
             </button>
-            <button onClick={() => scrollTo('contact')} className="hover:text-emerald-400 transition-colors">
+            <button onClick={() => scrollTo('contact')} className="hover:text-[#00E5D4] hover:-translate-y-0.5 transition-all duration-200">
               Contact
             </button>
           </div>
@@ -628,7 +975,7 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors"
+              className="p-2 rounded-xl bg-[#0B1824] border border-[#00E5D4]/15 text-[#A7B3C2] hover:text-[#F1F5F9] hover:border-[#00E5D4]/40 hover:-translate-y-0.5 transition-all duration-200"
             >
               <Github className="w-4 h-4" />
             </a>
@@ -637,21 +984,24 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
+              className="p-2 rounded-xl bg-[#0B1824] border border-[#00E5D4]/15 text-[#A7B3C2] hover:text-[#00C8FF] hover:border-[#00C8FF]/40 hover:-translate-y-0.5 transition-all duration-200"
             >
               <Linkedin className="w-4 h-4" />
             </a>
-            <button
-              onClick={() => setShowResumeModal(true)}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition-all"
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#0B1824] border border-[#00E5D4]/30 text-[#00E5D4] hover:bg-[#00E5D4]/10 hover:border-[#00E5D4] hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm hover:shadow-[0_0_15px_rgba(0,229,212,0.2)]"
             >
-              <FileText className="w-3.5 h-3.5 text-emerald-400" />
+              <FileText className="w-3.5 h-3.5 text-[#00E5D4]" />
               <span>View Resume</span>
-            </button>
+              <ExternalLink className="w-3 h-3 text-[#A7B3C2]" />
+            </a>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300"
+              className="md:hidden p-2 rounded-xl bg-[#0B1824] border border-[#00E5D4]/15 text-[#A7B3C2]"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -660,83 +1010,83 @@ export default function App() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden bg-slate-950/95 border-b border-slate-800 px-6 py-4 space-y-2">
+          <div className="md:hidden bg-[#08131F]/95 border-b border-[#00E5D4]/15 px-6 py-4 space-y-2">
             {[
               { id: 'about', label: 'About' },
-              { id: 'skills', label: 'Skill sets' },
-              { id: 'projects', label: 'Projects' },
               { id: 'experience', label: 'Internships' },
+              { id: 'projects', label: 'Projects' },
+              { id: 'skills', label: 'Skill sets' },
               { id: 'education-certificates', label: 'Education & Certificates' },
               { id: 'contact', label: 'Contact' }
             ].map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className="block w-full text-left py-2 text-sm font-medium text-slate-300 hover:text-emerald-400"
+                className="block w-full text-left py-2 text-sm font-medium text-[#A7B3C2] hover:text-[#00E5D4]"
               >
                 {item.label}
               </button>
             ))}
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                setShowResumeModal(true);
-              }}
-              className="block w-full text-left py-2 text-sm font-semibold text-emerald-400"
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left py-2 text-sm font-semibold text-[#00E5D4]"
             >
-              View Full Resume
-            </button>
+              View Resume
+            </a>
           </div>
         )}
       </nav>
 
       {/* Main Content Container */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-24">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-24 space-y-10 md:space-y-12 pb-16 md:pb-20">
         {/* ==========================================
             1. HERO SECTION + GOKUL'S ASSISTANT (CHAT ONLY)
         ========================================== */}
-        <section id="about" className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start scroll-mt-24">
+        <section id="about" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start scroll-mt-16">
           {/* Left Column: Intro & Bio */}
-          <div className="lg:col-span-7 space-y-6 pt-2">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="lg:col-span-7 space-y-5 pt-2">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-[#00E5D4]/10 border border-[#00E5D4]/30 text-[#00E5D4] shadow-sm hover:border-[#00E5D4]/60 transition-colors duration-200">
+              <span className="w-2 h-2 rounded-full bg-[#00E5D4] animate-pulse" />
               <span>{profile.status}</span>
             </div>
 
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+              <h1 className="text-4xl sm:text-6xl font-black font-heading tracking-tight text-[#F1F5F9] leading-tight">
                 Hi, I'm{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5D4] via-[#00C8FF] to-sky-300">
                   {profile.name}
                 </span>
               </h1>
-              <p className="text-xl sm:text-2xl font-semibold text-slate-300">
-                {profile.role}
+              <p className="text-xl sm:text-2xl font-bold font-heading text-[#F1F5F9] tracking-tight">
+                AI Engineer & Software Developer
               </p>
             </div>
 
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+            <p className="text-[#A7B3C2] text-base sm:text-lg leading-relaxed">
               {profile.summary}
             </p>
 
             {/* Contact Info Pills */}
             <div className="flex flex-wrap gap-3 pt-1">
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 text-xs sm:text-sm text-slate-300">
-                <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0B1824] border border-[#00E5D4]/15 text-xs sm:text-sm text-[#A7B3C2] hover:border-[#00E5D4]/30 hover:text-[#F1F5F9] hover:-translate-y-0.5 transition-all duration-200">
+                <MapPin className="w-4 h-4 text-[#00E5D4] shrink-0" />
                 <span>{profile.location}</span>
               </div>
               <a
                 href={`mailto:${profile.email}`}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 text-xs sm:text-sm text-slate-300 hover:border-emerald-500/40 hover:text-emerald-300 transition-colors"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0B1824] border border-[#00E5D4]/15 text-xs sm:text-sm text-[#A7B3C2] hover:border-[#00E5D4]/40 hover:text-[#00E5D4] hover:-translate-y-0.5 transition-all duration-200"
               >
-                <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
+                <Mail className="w-4 h-4 text-[#00C8FF] shrink-0" />
                 <span>{profile.email}</span>
               </a>
               <a
-                href={`tel:${profile.phone}`}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 text-xs sm:text-sm text-slate-300 hover:border-emerald-500/40 hover:text-emerald-300 transition-colors"
+                href={`tel:${profile.phone.replace(/\s+/g, '')}`}
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0B1824] border border-[#00E5D4]/15 text-xs sm:text-sm text-[#A7B3C2] hover:border-[#00E5D4]/40 hover:text-[#00E5D4] hover:-translate-y-0.5 transition-all duration-200"
               >
-                <Phone className="w-4 h-4 text-indigo-400 shrink-0" />
+                <Phone className="w-4 h-4 text-teal-400 shrink-0" />
                 <span>{profile.phone}</span>
               </a>
             </div>
@@ -745,23 +1095,26 @@ export default function App() {
             <div className="flex flex-wrap items-center gap-3.5 pt-3">
               <button
                 onClick={() => scrollTo('projects')}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold text-sm hover:opacity-95 shadow-lg shadow-emerald-500/20 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#00E5D4] to-[#00C8FF] text-[#050B12] font-bold text-sm hover:opacity-95 shadow-lg shadow-[#00E5D4]/20 hover:shadow-[#00E5D4]/30 hover:scale-105 active:scale-95 transition-all duration-300"
               >
                 <span>Explore Projects</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
-              <button
-                onClick={() => setShowResumeModal(true)}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 border border-emerald-500/40 hover:bg-slate-800 text-sm font-semibold text-emerald-300 transition-all"
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0B1824] border border-[#00E5D4]/40 hover:bg-[#00E5D4]/10 text-sm font-semibold text-[#00E5D4] hover:scale-105 active:scale-95 shadow-sm hover:shadow-[0_0_15px_rgba(0,229,212,0.15)] transition-all duration-300"
               >
-                <FileText className="w-4 h-4 text-emerald-400" />
-                <span>View Full Resume</span>
-              </button>
+                <FileText className="w-4 h-4 text-[#00E5D4]" />
+                <span>View Resume</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
               <a
                 href={profile.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-sm font-medium text-slate-200 transition-all"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0B1824] border border-[#00E5D4]/15 hover:border-[#00E5D4]/40 text-sm font-medium text-[#F1F5F9] hover:-translate-y-0.5 transition-all duration-200"
               >
                 <Github className="w-4 h-4" />
                 <span>GitHub</span>
@@ -770,28 +1123,28 @@ export default function App() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-sm font-medium text-slate-200 transition-all"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0B1824] border border-[#00E5D4]/15 hover:border-[#00C8FF]/40 text-sm font-medium text-[#F1F5F9] hover:-translate-y-0.5 transition-all duration-200"
               >
-                <Linkedin className="w-4 h-4 text-cyan-400" />
+                <Linkedin className="w-4 h-4 text-[#00C8FF]" />
                 <span>LinkedIn</span>
               </a>
             </div>
           </div>
 
           {/* Right Column: Gokul's Assistant (Clean Chat Interface Only) */}
-          <div className="lg:col-span-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-2xl overflow-hidden backdrop-blur-xl">
+          <div className="lg:col-span-5 rounded-2xl bg-[#0B1824]/90 border border-[#00E5D4]/20 shadow-2xl overflow-hidden backdrop-blur-xl">
             {/* Chatbot Header */}
-            <div className="px-5 py-3.5 bg-slate-950/90 border-b border-slate-800 flex items-center justify-between">
+            <div className="px-5 py-3.5 bg-[#08131F]/90 border-b border-[#00E5D4]/15 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <div className="w-9 h-9 rounded-xl bg-[#00E5D4]/15 border border-[#00E5D4]/30 flex items-center justify-center text-[#00E5D4]">
                   <Bot className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white leading-none">
+                  <h3 className="text-sm font-bold font-heading text-[#F1F5F9] leading-none">
                     Gokul's Assistant
                   </h3>
-                  <p className="text-[11px] text-emerald-400 mt-1 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <p className="text-[11px] text-[#00E5D4] mt-1 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00E5D4] animate-pulse" />
                     Online • Ask me anything about Gokul
                   </p>
                 </div>
@@ -807,20 +1160,19 @@ export default function App() {
                 {chatHistory.map((msg, i) => (
                   <div
                     key={i}
-                    className={`p-3 rounded-xl text-xs leading-relaxed ${
-                      msg.role === 'user'
-                        ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-200 ml-8'
-                        : 'bg-slate-950/90 border border-slate-800 text-slate-200 mr-4'
-                    }`}
+                    className={`p-3 rounded-xl text-xs leading-relaxed ${msg.role === 'user'
+                      ? 'bg-gradient-to-r from-[#00E5D4]/15 to-[#00C8FF]/15 border border-[#00E5D4]/30 text-[#F1F5F9] ml-8'
+                      : 'bg-[#08131F]/90 border border-[#00E5D4]/15 text-[#F1F5F9] mr-4'
+                      }`}
                   >
-                    <div className="font-semibold text-[10px] uppercase tracking-wider mb-1 text-slate-400">
+                    <div className="font-semibold text-[10px] uppercase tracking-wider mb-1 text-[#A7B3C2]">
                       {msg.role === 'user' ? 'You' : 'Assistant'}
                     </div>
                     {renderMessageWithLinks(msg.text)}
                   </div>
                 ))}
                 {chatLoading && (
-                  <div className="p-3 rounded-xl bg-slate-950/90 border border-slate-800 text-xs text-emerald-400 animate-pulse">
+                  <div className="p-3 rounded-xl bg-[#08131F]/90 border border-[#00E5D4]/15 text-xs text-[#00E5D4] animate-pulse">
                     Assistant is typing...
                   </div>
                 )}
@@ -828,20 +1180,22 @@ export default function App() {
 
               {/* Simple Predefined Questions */}
               <div className="space-y-1.5">
-                <p className="text-[11px] text-slate-400 font-medium">
+                <p className="text-[11px] text-[#A7B3C2] font-medium">
                   Quick questions:
                 </p>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="grid grid-cols-3 gap-1.5">
                   {[
-                    "What are Gokul's skills in AI?",
+                    'Skills?',
+                    'Internships?',
+                    'Projects?',
                     'Educational details?',
-                    'GitHub link and LinkedIn links?',
-                    'Certifications?'
+                    'Certifications?',
+                    'Contact details?'
                   ].map((q, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleAskAssistant(q)}
-                      className="text-[11px] px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 transition-colors"
+                      className="text-[11px] px-2 py-2 rounded-lg bg-[#08131F] border border-[#00E5D4]/20 text-[#A7B3C2] hover:border-[#00E5D4]/50 hover:text-[#00E5D4] hover:bg-[#00E5D4]/5 transition-all text-center flex items-center justify-center leading-snug"
                     >
                       {q}
                     </button>
@@ -862,12 +1216,12 @@ export default function App() {
                   value={chatQuery}
                   onChange={(e) => setChatQuery(e.target.value)}
                   placeholder="Ask a question about Gokul..."
-                  className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/60"
+                  className="flex-1 bg-[#08131F] border border-[#00E5D4]/20 rounded-xl px-3.5 py-2.5 text-xs text-[#F1F5F9] placeholder-[#A7B3C2]/60 focus:outline-none focus:border-[#00E5D4]/60"
                 />
                 <button
                   type="submit"
                   disabled={chatLoading}
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-semibold text-xs hover:bg-emerald-400 disabled:opacity-50 transition-colors flex items-center gap-1"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#00E5D4] to-[#00C8FF] text-[#050B12] font-semibold text-xs hover:opacity-90 disabled:opacity-50 transition-colors flex items-center gap-1 shadow-md shadow-[#00E5D4]/20"
                   aria-label="Send message"
                 >
                   <Send className="w-3.5 h-3.5" />
@@ -878,37 +1232,199 @@ export default function App() {
         </section>
 
         {/* ==========================================
-            2. SKILL SETS SECTION (INDIVIDUAL BLOCKS + SEARCH BAR)
+            2. INTERNSHIPS EXPERIENCE SECTION
         ========================================== */}
-        <section id="skills" className="space-y-8 scroll-mt-24">
+        <section id="experience" className="space-y-4 scroll-mt-16">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#00E5D4] mb-2">
+              <Briefcase className="w-4 h-4" />
+              <span>Industry Experience</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-[#F1F5F9]">
+              Internships
+            </h2>
+            <p className="text-sm text-[#A7B3C2] mt-1">
+              Hands-on industry experience building AI workflows, autonomous agent systems, and full-stack software solutions.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {internships.map((internship, index) => (
+              <TiltCard
+                key={index}
+                className="cinematic-card p-6 sm:p-8 rounded-2xl bg-[#0B1824]/90 border border-[#00E5D4]/15 hover:border-[#00E5D4]/40 hover:shadow-[0_10px_30px_-10px_rgba(0,229,212,0.15)] transition-colors duration-300 space-y-5 group"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#00E5D4]/15">
+                  <div className="flex items-start gap-3.5">
+                    <div>
+                      <h3 className="text-xl font-bold font-heading text-[#F1F5F9] group-hover:text-[#00E5D4] transition-colors duration-200">
+                        {internship.company}
+                      </h3>
+                      <p className="text-[#00E5D4] text-sm font-medium mt-0.5">
+                        {internship.role}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-[#08131F] text-[#A7B3C2] border border-[#00E5D4]/15 w-fit group-hover:border-[#00E5D4]/40 group-hover:text-[#F1F5F9] transition-colors duration-200">
+                    {internship.period}
+                  </span>
+                </div>
+
+                <ul className="space-y-3">
+                  {internship.responsibilities.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-[#A7B3C2]">
+                      <span className="w-2 h-2 rounded-full bg-[#00E5D4] mt-2 shrink-0 group-hover:scale-125 transition-transform duration-200" />
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap items-center gap-2 pt-2">
+                  {internship.tech.map((t, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 rounded-lg text-xs font-mono bg-[#08131F] text-[#A7B3C2] border border-[#00E5D4]/15 hover:border-[#00E5D4]/40 hover:text-[#00E5D4] transition-all duration-200"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </TiltCard>
+            ))}
+          </div>
+        </section>
+
+        {/* ==========================================
+            3. FEATURED PROJECTS SECTION (3 SIDE BY SIDE + LARGER GITHUB CTA)
+        ========================================== */}
+        <section id="projects" className="space-y-4 scroll-mt-16">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#00C8FF] mb-1">
+                <Brain className="w-4 h-4" />
+                <span>AI & Engineering Portfolio</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-[#F1F5F9]">
+                Featured Projects
+              </h2>
+              <p className="text-sm text-[#A7B3C2] mt-1">
+                Core systems built across Retrieval-Augmented Generation, Computer Vision, and Conversational NLP.
+              </p>
+            </div>
+
+            {/* Enlarged Prominent GitHub Repositories Button */}
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 px-7 py-3.5 text-base sm:text-lg font-bold font-heading rounded-2xl bg-gradient-to-r from-[#00E5D4]/15 via-[#00C8FF]/15 to-[#08131F] border-2 border-[#00E5D4]/50 text-[#00E5D4] hover:bg-gradient-to-r hover:from-[#00E5D4] hover:to-[#00C8FF] hover:text-[#050B12] hover:border-[#00E5D4] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg shadow-[#00E5D4]/10 shrink-0"
+            >
+              <Github className="w-5 h-5" />
+              <span>View all repositories on GitHub</span>
+              <ExternalLink className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* 3 Projects Side-by-Side Grid with Mouse-Position 3D Tilt */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            {projects.map((project, idx) => (
+              <TiltCard
+                key={idx}
+                className="cinematic-card p-6 rounded-2xl bg-[#0B1824]/90 border border-[#00E5D4]/15 hover:border-[#00C8FF]/50 hover:shadow-[0_10px_30px_-10px_rgba(0,200,255,0.15)] flex flex-col justify-between h-full shadow-lg group"
+              >
+                <div className="space-y-4">
+                  {/* Top Icon & Badge (Sequential number removed) */}
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="p-3 rounded-xl bg-[#08131F] border border-[#00E5D4]/20 text-[#00E5D4] group-hover:scale-110 group-hover:border-[#00C8FF]/50 transition-all duration-300">
+                      {project.icon}
+                    </div>
+                    <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-[#00C8FF]/10 text-[#00C8FF] border border-[#00C8FF]/30 group-hover:border-[#00C8FF]/50 group-hover:bg-[#00C8FF]/20 transition-all duration-300">
+                      {project.badge}
+                    </span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <div>
+                    <h3 className="text-xl font-bold font-heading text-[#F1F5F9] tracking-tight group-hover:text-[#00C8FF] transition-colors duration-200">
+                      {project.title}
+                    </h3>
+                    <p className="text-[#A7B3C2] text-xs sm:text-sm mt-2 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Key Bullet Points */}
+                  <ul className="space-y-2 pt-1">
+                    {project.highlights.map((item, hIdx) => (
+                      <li key={hIdx} className="flex items-start gap-2 text-xs text-[#A7B3C2]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#00C8FF] mt-1.5 shrink-0 group-hover:scale-125 transition-transform duration-200" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Footer: Tools & Specific GitHub Repo Link */}
+                <div className="pt-5 mt-6 border-t border-[#00E5D4]/15 space-y-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tools.map((tool, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-[#08131F] text-[#00C8FF] border border-[#00C8FF]/20 hover:border-[#00C8FF]/50 transition-colors duration-200"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#08131F] hover:bg-gradient-to-r hover:from-[#00E5D4] hover:to-[#00C8FF] text-xs font-bold text-[#F1F5F9] hover:text-[#050B12] border border-[#00E5D4]/20 hover:border-[#00E5D4] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-sm"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>Open Repository on GitHub</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </TiltCard>
+            ))}
+          </div>
+        </section>
+
+        {/* ==========================================
+            4. SKILL SETS SECTION (SUBTLE POP-UP HOVER INTERACTION - NO ROTATION/TILT)
+        ========================================== */}
+        <section id="skills" className="space-y-4 scroll-mt-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400 mb-2">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#00E5D4] mb-1">
                 <Sparkles className="w-4 h-4" />
                 <span>Technical Competencies</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-[#F1F5F9]">
                 Skill sets
               </h2>
-              <p className="text-sm text-slate-400 mt-1">
+              <p className="text-sm text-[#A7B3C2] mt-1">
                 Search or filter individual technical skill blocks across AI, programming languages, web technologies, and databases.
               </p>
             </div>
 
             {/* Live Search Bar */}
             <div className="relative w-full md:w-80">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-4 h-4 text-[#A7B3C2] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={skillSearch}
                 onChange={(e) => setSkillSearch(e.target.value)}
                 placeholder="Search skills e.g. Python, RAG, React.js..."
-                className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/60 transition-colors"
+                className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-[#0B1824] border border-[#00E5D4]/20 text-xs sm:text-sm text-[#F1F5F9] placeholder-[#A7B3C2]/60 focus:outline-none focus:border-[#00E5D4]/60 transition-colors"
               />
               {skillSearch && (
                 <button
                   onClick={() => setSkillSearch('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A7B3C2] hover:text-[#F1F5F9] transition-colors"
                   aria-label="Clear skill search"
                 >
                   <X className="w-4 h-4" />
@@ -925,11 +1441,10 @@ export default function App() {
                 <button
                   key={category}
                   onClick={() => setSelectedSkillCategory(category)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-                    active
-                      ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                      : 'bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-slate-700 hover:text-white'
-                  }`}
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 hover:scale-105 active:scale-95 ${active
+                    ? 'bg-gradient-to-r from-[#00E5D4] to-[#00C8FF] text-[#050B12] shadow-md shadow-[#00E5D4]/20'
+                    : 'bg-[#0B1824] text-[#A7B3C2] border border-[#00E5D4]/15 hover:border-[#00E5D4]/40 hover:text-[#F1F5F9]'
+                    }`}
                 >
                   {category}
                 </button>
@@ -937,9 +1452,9 @@ export default function App() {
             })}
           </div>
 
-          {/* Individual Skill Blocks Grid */}
+          {/* Individual Skill Blocks Grid (Pop-up Hover Effect - No 3D tilt, No rotate) */}
           {filteredSkills.length === 0 ? (
-            <div className="p-8 rounded-2xl bg-slate-900/40 border border-slate-800 text-center text-sm text-slate-400">
+            <div className="p-8 rounded-2xl bg-[#0B1824]/60 border border-[#00E5D4]/15 text-center text-sm text-[#A7B3C2]">
               No matching skill found for "{skillSearch}". Try another keyword or select "All".
             </div>
           ) : (
@@ -947,22 +1462,22 @@ export default function App() {
               {filteredSkills.map((skill, idx) => (
                 <div
                   key={idx}
-                  className="group p-4 rounded-2xl bg-slate-900/70 border border-slate-800/90 hover:border-emerald-500/50 hover:bg-slate-900 transition-all flex flex-col justify-between gap-3 shadow-sm"
+                  className="cinematic-card p-4 rounded-2xl bg-[#0B1824]/90 border border-[#00E5D4]/15 hover:border-[#00E5D4]/50 hover:shadow-[0_12px_24px_-8px_rgba(0,229,212,0.22)] hover:-translate-y-1 hover:scale-[1.02] transition-all duration-200 ease-out flex flex-col justify-between gap-3 shadow-sm group cursor-pointer"
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 group-hover:border-emerald-500/40 transition-colors">
+                    <div className="p-2.5 rounded-xl bg-[#08131F] border border-[#00E5D4]/20 text-[#00E5D4] group-hover:border-[#00E5D4]/60 group-hover:scale-110 transition-all duration-300">
                       {skill.icon}
                     </div>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-950 text-slate-400 border border-slate-800 truncate max-w-[110px]">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#08131F] text-[#A7B3C2] border border-[#00E5D4]/15 truncate max-w-[110px]">
                       {skill.category}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-sm sm:text-base font-bold font-heading text-[#F1F5F9] group-hover:text-[#00E5D4] transition-colors">
                       {skill.name}
                     </h3>
-                    <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                    <p className="text-[11px] text-[#A7B3C2] mt-0.5 leading-snug">
                       {skill.tag}
                     </p>
                   </div>
@@ -973,295 +1488,147 @@ export default function App() {
         </section>
 
         {/* ==========================================
-            3. FEATURED PROJECTS SECTION (3 SIDE BY SIDE + LARGER GITHUB CTA)
-        ========================================== */}
-        <section id="projects" className="space-y-8 scroll-mt-24">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div>
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-400 mb-2">
-                <Brain className="w-4 h-4" />
-                <span>AI & Engineering Portfolio</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-                Featured Projects
-              </h2>
-              <p className="text-sm text-slate-400 mt-1">
-                Core systems built across Retrieval-Augmented Generation, Computer Vision, and Conversational NLP.
-              </p>
-            </div>
-
-            {/* Enlarged Prominent GitHub Repositories Button */}
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-7 py-4 text-base sm:text-lg font-bold rounded-2xl bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border-2 border-emerald-500/50 text-emerald-300 hover:bg-emerald-500 hover:text-slate-950 hover:border-emerald-400 transition-all shadow-lg shadow-emerald-500/10 shrink-0"
-            >
-              <Github className="w-5 h-5" />
-              <span>View all repositories on GitHub</span>
-              <ExternalLink className="w-5 h-5" />
-            </a>
-          </div>
-
-          {/* 3 Projects Side-by-Side Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-            {projects.map((project, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col justify-between h-full shadow-lg"
-              >
-                <div className="space-y-4">
-                  {/* Top Icon & Badge */}
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                      {project.icon}
-                    </div>
-                    <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
-                      {project.badge}
-                    </span>
-                  </div>
-
-                  {/* Title & Description */}
-                  <div>
-                    <h3 className="text-xl font-bold text-white tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  {/* Key Bullet Points */}
-                  <ul className="space-y-2 pt-1">
-                    {project.highlights.map((item, hIdx) => (
-                      <li key={hIdx} className="flex items-start gap-2 text-xs text-slate-300">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Footer: Tools & Specific GitHub Repo Link */}
-                <div className="pt-5 mt-6 border-t border-slate-800/80 space-y-4">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tools.map((tool, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-slate-950 text-cyan-300 border border-slate-800"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-950 hover:bg-emerald-500 text-xs font-bold text-slate-200 hover:text-slate-950 border border-slate-800 hover:border-emerald-400 transition-all"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>Open Repository on GitHub</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==========================================
-            4. INTERNSHIPS EXPERIENCE SECTION
-        ========================================== */}
-        <section id="experience" className="space-y-6 scroll-mt-24">
-          <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-indigo-400 mb-2">
-              <Briefcase className="w-4 h-4" />
-              <span>Industry Experience</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-              Internships
-            </h2>
-          </div>
-
-          <div className="space-y-6">
-            {internships.map((internship, index) => (
-              <div
-                key={index}
-                className="p-6 sm:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-5"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-800">
-                  <div>
-                    <h3 className="text-xl font-bold text-white">
-                      {internship.company}
-                    </h3>
-                    <p className="text-emerald-400 text-sm font-medium mt-0.5">
-                      {internship.role}
-                    </p>
-                  </div>
-                  <span className="px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-slate-950 text-slate-300 border border-slate-800 w-fit">
-                    {internship.period}
-                  </span>
-                </div>
-
-                <ul className="space-y-3">
-                  {internship.responsibilities.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
-                      <span className="w-2 h-2 rounded-full bg-indigo-400 mt-2 shrink-0" />
-                      <span className="leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap items-center gap-2 pt-2">
-                  {internship.tech.map((t, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 rounded-lg text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==========================================
             5. EDUCATION & CERTIFICATES SIDE-BY-SIDE (EQUAL TOTAL HEIGHT)
         ========================================== */}
         <section
           id="education-certificates"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch scroll-mt-24"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6 items-stretch scroll-mt-16"
         >
-          {/* Left Column: Education (B.E, HSC, SSLC stretched to match right column height) */}
+          {/* Left Column: Education */}
           <div className="flex flex-col h-full">
-            <div className="mb-6">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-400 mb-2">
+            <div className="mb-4">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#00C8FF] mb-2">
                 <GraduationCap className="w-4 h-4" />
                 <span>Academic Background</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-[#F1F5F9]">
                 Education
               </h2>
             </div>
 
             <div className="flex flex-col gap-4 flex-1 justify-between">
               {education.map((edu, idx) => (
-                <div
+                <TiltCard
                   key={idx}
-                  className="flex-1 p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-center gap-3"
+                  className="cinematic-card flex-1 p-6 rounded-2xl bg-[#0B1824]/90 border border-[#00E5D4]/15 hover:border-[#00C8FF]/50 hover:shadow-[0_10px_30px_-10px_rgba(0,200,255,0.15)] flex flex-col justify-center gap-3 group"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-semibold bg-slate-950 text-emerald-400 border border-slate-800">
-                      {edu.period}
-                    </span>
-                    <span className="inline-flex items-center px-3.5 py-1 rounded-xl text-xs font-mono font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-semibold bg-[#08131F] text-[#00C8FF] border border-[#00E5D4]/15 group-hover:border-[#00C8FF]/40 transition-colors duration-200">
+                        {edu.period}
+                      </span>
+                    </div>
+                    <span className="inline-flex items-center px-3.5 py-1 rounded-xl text-xs font-mono font-bold bg-[#00C8FF]/10 text-[#00C8FF] border border-[#00C8FF]/30">
                       {edu.score}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white">
+                    <h3 className="text-lg sm:text-xl font-bold font-heading text-[#F1F5F9] group-hover:text-[#00C8FF] transition-colors duration-200">
                       {edu.degree}
                     </h3>
-                    <p className="text-sm font-medium text-slate-300 mt-0.5">
+                    <p className="text-sm font-medium text-[#A7B3C2] mt-0.5">
                       {edu.institution}
                     </p>
                   </div>
-
-                  <p className="text-xs text-slate-400 pt-1 border-t border-slate-800/80">
-                    <span className="text-slate-300 font-semibold">Subjects:</span>{' '}
-                    {edu.subjects}
-                  </p>
-                </div>
+                </TiltCard>
               ))}
             </div>
           </div>
 
-          {/* Right Column: Certificates (AI, Python, Fundamentals of AI Agents, SQL matched to exact same height) */}
+          {/* Right Column: Certificates */}
           <div className="flex flex-col h-full">
-            <div className="mb-6">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400 mb-2">
+            <div className="mb-4">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#00E5D4] mb-2">
                 <Award className="w-4 h-4" />
                 <span>Verified Credentials</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight text-[#F1F5F9]">
                 Certificates
               </h2>
             </div>
 
             <div className="flex flex-col gap-4 flex-1 justify-between">
               {certificates.map((cert, idx) => (
-                <div
+                <TiltCard
                   key={idx}
-                  className="flex-1 p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  className="cinematic-card flex-1 p-5 rounded-2xl bg-[#0B1824]/90 border border-[#00E5D4]/15 hover:border-[#00E5D4]/50 hover:shadow-[0_10px_30px_-10px_rgba(0,229,212,0.15)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 group"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-emerald-400 shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-[#08131F] border border-[#00E5D4]/20 group-hover:border-[#00E5D4]/50 group-hover:scale-110 flex items-center justify-center text-[#00E5D4] shrink-0 transition-all duration-300">
                       <CheckCircle2 className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white">
+                      <h3 className="text-base sm:text-lg font-bold font-heading text-[#F1F5F9] group-hover:text-[#00E5D4] transition-colors duration-200">
                         {cert.title}
                       </h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{cert.category}</p>
+                      <p className="text-xs text-[#A7B3C2] mt-0.5">{cert.category}</p>
                     </div>
                   </div>
 
-                  <div className="sm:text-right shrink-0">
-                    <span className="inline-flex items-center px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-slate-950 text-cyan-300 border border-slate-800">
+                  <div className="flex items-center gap-2.5 shrink-0 self-start sm:self-center">
+                    <span className="inline-flex items-center px-3 py-1 rounded-xl text-xs font-mono font-semibold bg-[#08131F] text-[#00E5D4] border border-[#00E5D4]/20">
                       {cert.issuer}
                     </span>
+                    {cert.certificateUrl && (
+                      <a
+                        href={cert.certificateUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[#00E5D4]/10 hover:bg-gradient-to-r hover:from-[#00E5D4] hover:to-[#00C8FF] text-[#00E5D4] hover:text-[#050B12] border border-[#00E5D4]/30 hover:border-[#00E5D4] shadow-sm hover:shadow-[0_0_15px_rgba(0,229,212,0.2)] hover:scale-105 active:scale-95 transition-all duration-300 group/btn"
+                      >
+                        <span>View</span>
+                        <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200" />
+                      </a>
+                    )}
                   </div>
-                </div>
+                </TiltCard>
               ))}
             </div>
           </div>
         </section>
 
         {/* ==========================================
-            6. CONTACT SECTION
+            6. CONTACT SECTION (EXPLICITLY EXCLUDED FROM 3D TILT - SIMPLE BORDER GLOW ONLY)
         ========================================== */}
         <section
           id="contact"
-          className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 text-center space-y-6 scroll-mt-24"
+          className="contact-box p-6 sm:p-8 rounded-3xl bg-[#0B1824] border border-[#00E5D4]/20 hover:border-[#00E5D4]/40 hover:shadow-[0_0_35px_rgba(0,229,212,0.12)] text-center space-y-4 scroll-mt-16 transition-shadow duration-300"
+          style={{ transform: 'none' }}
         >
-          <div className="max-w-xl mx-auto space-y-3">
-            <h2 className="text-3xl font-extrabold text-white">
+          <div className="max-w-xl mx-auto space-y-3 text-center">
+            <h2 className="text-3xl font-extrabold font-heading text-[#F1F5F9]">
               Let's Connect & Collaborate
             </h2>
-            <p className="text-sm text-slate-400">
-              {profile.status}. Reach out directly via email, phone, LinkedIn, or GitHub.
+            <p className="text-sm sm:text-base text-[#A7B3C2] leading-relaxed max-w-lg mx-auto">
+              Available for AI Engineer &amp; Software developer Roles. Reach out directly via email, LinkedIn, GitHub, or phone call.
             </p>
           </div>
 
           {/* Copyable Contact Pills */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button
-              onClick={() => handleCopy(profile.email, 'email')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs text-slate-300 font-mono transition-colors"
+              onClick={() => handleCopy('6380802728', 'phone')}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#08131F] border border-[#00E5D4]/15 hover:border-[#00E5D4]/40 hover:shadow-md text-xs text-[#A7B3C2] hover:text-[#F1F5F9] font-mono transition-all duration-200"
             >
-              {copiedItem === 'email' ? (
-                <Check className="w-4 h-4 text-emerald-400" />
+              {copiedItem === 'phone' ? (
+                <Check className="w-4 h-4 text-[#00C8FF]" />
               ) : (
-                <Copy className="w-4 h-4 text-cyan-400" />
+                <Copy className="w-4 h-4 text-[#00C8FF]" />
               )}
-              <span>{profile.email}</span>
+              <span>6380802728</span>
             </button>
 
             <button
-              onClick={() => handleCopy(profile.phone, 'phone')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs text-slate-300 font-mono transition-colors"
+              onClick={() => handleCopy(profile.email, 'email')}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#08131F] border border-[#00E5D4]/15 hover:border-[#00E5D4]/40 hover:shadow-md text-xs text-[#A7B3C2] hover:text-[#F1F5F9] font-mono transition-all duration-200"
             >
-              {copiedItem === 'phone' ? (
-                <Check className="w-4 h-4 text-emerald-400" />
+              {copiedItem === 'email' ? (
+                <Check className="w-4 h-4 text-[#00E5D4]" />
               ) : (
-                <Copy className="w-4 h-4 text-emerald-400" />
+                <Copy className="w-4 h-4 text-[#00E5D4]" />
               )}
-              <span>{profile.phone}</span>
+              <span>gokul05102003@gmail.com</span>
             </button>
           </div>
 
@@ -1269,25 +1636,32 @@ export default function App() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm hover:bg-emerald-400 shadow-lg shadow-emerald-500/20 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#00E5D4] to-[#00C8FF] text-[#050B12] font-bold text-sm hover:opacity-95 shadow-lg shadow-[#00E5D4]/25 hover:scale-105 active:scale-95 transition-all duration-200"
             >
               <Mail className="w-4 h-4" />
               <span>Send Email</span>
             </a>
             <a
+              href={`tel:${profile.phone.replace(/\s+/g, '')}`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#08131F] hover:bg-[#0B1824] text-[#F1F5F9] font-medium text-sm border border-[#00E5D4]/20 hover:border-[#00E5D4]/40 transition-all duration-200 shadow-sm"
+            >
+              <Phone className="w-4 h-4 text-[#00E5D4]" />
+              <span>Call</span>
+            </a>
+            <a
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm border border-slate-800 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#08131F] hover:bg-[#0B1824] text-[#F1F5F9] font-medium text-sm border border-[#00E5D4]/20 hover:border-[#00C8FF]/40 transition-all duration-200 shadow-sm"
             >
-              <Linkedin className="w-4 h-4 text-cyan-400" />
+              <Linkedin className="w-4 h-4 text-[#00C8FF]" />
               <span>LinkedIn</span>
             </a>
             <a
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm border border-slate-800 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#08131F] hover:bg-[#0B1824] text-[#F1F5F9] font-medium text-sm border border-[#00E5D4]/20 hover:border-[#00E5D4]/40 transition-all duration-200 shadow-sm"
             >
               <Github className="w-4 h-4" />
               <span>GitHub</span>
@@ -1295,227 +1669,6 @@ export default function App() {
           </div>
         </section>
       </main>
-
-      {/* ==========================================
-          FULL DIGITAL RESUME MODAL (NO PRINT BUTTON, ALL 6 SECTIONS)
-      ========================================== */}
-      {showResumeModal && (
-        <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl">
-            {/* Modal Header */}
-            <div className="flex items-start justify-between border-b border-slate-800 pb-5">
-              <div className="space-y-1">
-                <h3 className="text-2xl font-extrabold text-white">{profile.name}</h3>
-                <p className="text-xs sm:text-sm text-slate-300">
-                  {profile.location} • {profile.email} • {profile.phone}
-                </p>
-                <div className="flex flex-wrap items-center gap-4 pt-1 text-xs font-medium">
-                  <a
-                    href={profile.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-emerald-400 hover:underline inline-flex items-center gap-1"
-                  >
-                    <Github className="w-3.5 h-3.5" /> GitHub (GOKUL05102003)
-                  </a>
-                  <a
-                    href={profile.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:underline inline-flex items-center gap-1"
-                  >
-                    <Linkedin className="w-3.5 h-3.5" /> LinkedIn (gokulrajakumar)
-                  </a>
-                </div>
-              </div>
-
-              <button
-                onClick={() => setShowResumeModal(false)}
-                className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
-                aria-label="Close Resume Modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Full Resume Body: All 6 Sections */}
-            <div className="space-y-6 text-xs sm:text-sm text-slate-300">
-              {/* 1. Executive Summary */}
-              <div>
-                <h4 className="font-bold text-emerald-400 uppercase tracking-wider text-xs mb-2 border-b border-slate-800 pb-1">
-                  Executive Summary
-                </h4>
-                <p className="leading-relaxed">{profile.summary}</p>
-              </div>
-
-              {/* 2. Education */}
-              <div>
-                <h4 className="font-bold text-emerald-400 uppercase tracking-wider text-xs mb-2.5 border-b border-slate-800 pb-1">
-                  Education
-                </h4>
-                <div className="space-y-3">
-                  {education.map((e, i) => (
-                    <div
-                      key={i}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 bg-slate-950/60 p-3 rounded-xl border border-slate-800/80"
-                    >
-                      <div>
-                        <div className="font-bold text-white">{e.degree}</div>
-                        <div className="text-xs text-slate-300">{e.institution}</div>
-                        <div className="text-xs text-slate-400 mt-0.5">
-                          Subjects: {e.subjects}
-                        </div>
-                      </div>
-                      <div className="sm:text-right font-mono text-xs text-emerald-300 shrink-0">
-                        <div>{e.period}</div>
-                        <div className="font-bold">{e.score}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 3. Skills */}
-              <div>
-                <h4 className="font-bold text-emerald-400 uppercase tracking-wider text-xs mb-2.5 border-b border-slate-800 pb-1">
-                  Skills
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 bg-slate-950/60 p-4 rounded-xl border border-slate-800/80 text-xs">
-                  <div>
-                    <span className="font-bold text-white">Programming Languages: </span>
-                    <span className="text-slate-300">Python, Java, C, JavaScript</span>
-                  </div>
-                  <div>
-                    <span className="font-bold text-white">Artificial Intelligence: </span>
-                    <span className="text-slate-300">
-                      Machine Learning, Deep Learning, LLMs, RAG, LangChain, LangGraph, MCP, Hugging Face
-                    </span>
-                  </div>
-                  <div>
-                    <span className="font-bold text-white">Web Technologies: </span>
-                    <span className="text-slate-300">FastAPI, React.js, HTML, CSS</span>
-                  </div>
-                  <div>
-                    <span className="font-bold text-white">Databases: </span>
-                    <span className="text-slate-300">MySQL</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* 4. Projects */}
-              <div>
-                <h4 className="font-bold text-emerald-400 uppercase tracking-wider text-xs mb-2.5 border-b border-slate-800 pb-1">
-                  Projects
-                </h4>
-                <div className="space-y-3">
-                  {projects.map((p, i) => (
-                    <div
-                      key={i}
-                      className="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5"
-                    >
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="font-bold text-white">{p.title}</span>
-                        <a
-                          href={p.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs font-mono text-emerald-400 hover:underline inline-flex items-center gap-1"
-                        >
-                          <Github className="w-3.5 h-3.5" /> GitHub Repository
-                        </a>
-                      </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
-                        {p.description}
-                      </p>
-                      <div className="text-[11px] font-mono text-cyan-300">
-                        Tools: {p.tools.join(', ')}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 5. Internships */}
-              <div>
-                <h4 className="font-bold text-emerald-400 uppercase tracking-wider text-xs mb-2.5 border-b border-slate-800 pb-1">
-                  Internships
-                </h4>
-                <div className="space-y-3">
-                  {internships.map((intern, idx) => (
-                    <div
-                      key={idx}
-                      className="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 space-y-2"
-                    >
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <div>
-                          <span className="font-bold text-white">{intern.company}</span>
-                          <span className="text-xs text-emerald-400 ml-2 font-medium">
-                            • {intern.role}
-                          </span>
-                        </div>
-                        <span className="text-xs font-mono text-emerald-300">
-                          {intern.period}
-                        </span>
-                      </div>
-                      <ul className="list-disc list-inside space-y-1 text-xs text-slate-300">
-                        {intern.responsibilities.map((r, rIdx) => (
-                          <li key={rIdx}>{r}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 6. Certificates */}
-              <div>
-                <h4 className="font-bold text-emerald-400 uppercase tracking-wider text-xs mb-2.5 border-b border-slate-800 pb-1">
-                  Certificates
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {certificates.map((c, idx) => (
-                    <div
-                      key={idx}
-                      className="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80 flex items-center justify-between"
-                    >
-                      <span className="font-bold text-white text-xs">{c.title}</span>
-                      <span className="text-xs font-mono text-cyan-300">{c.issuer}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Footer */}
-      <footer className="border-t border-slate-900 py-8 text-xs text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} Gokul R. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a href={`mailto:${profile.email}`} className="hover:text-white transition-colors">
-              Email
-            </a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

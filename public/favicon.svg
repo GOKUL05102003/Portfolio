@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-  <!-- Rounded background box matching your navbar logo -->
-  <rect width="36" height="36" rx="8" fill="#090d16" stroke="#10b981" stroke-width="2" stroke-opacity="0.3" />
-  
-  <!-- Letter G -->
-  <text x="50%" y="53%" dominant-baseline="central" text-anchor="middle" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-weight="bold" font-size="20">
-    G
-  </text>
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#00E5D4" />
+      <stop offset="100%" stopColor="#00C8FF" />
+    </linearGradient>
+  </defs>
+  <rect width="36" height="36" rx="9" fill="url(#brandGrad)" />
+  <text x="50%" y="54%" dominant-baseline="central" text-anchor="middle" fill="#050B12" font-family="'Arial Black', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="22">G</text>
 </svg>
