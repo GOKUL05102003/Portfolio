@@ -1,10 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stopColor="#00E5D4" />
       <stop offset="100%" stopColor="#00C8FF" />
     </linearGradient>
   </defs>
-  <rect width="36" height="36" rx="9" fill="url(#brandGrad)" />
-  <text x="50%" y="54%" dominant-baseline="central" text-anchor="middle" fill="#050B12" font-family="'Arial Black', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="22">G</text>
+  <!-- Dark Cyber Squircle Background -->
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="#08131F" stroke="#00E5D4" stroke-width="2.5" stroke-opacity="0.9" />
+  <!-- Center Bold Cyan Letter G -->
+  <text
+    x="50%"
+    y="53%"
+    dominant-baseline="central"
+    text-anchor="middle"
+    fill="url(#cyanGrad)"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Arial Black', sans-serif"
+    font-weight="900"
+    font-size="34"
+    letter-spacing="-1px"
+  >G</text>
 </svg>
